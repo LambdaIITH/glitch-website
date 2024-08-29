@@ -1,4 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = ''
 languageCode = 'en-us'
 title = 'Glitch'
 theme = 'osprey'
@@ -6,7 +6,7 @@ theme = 'osprey'
 [Params]
   glitch_name="adhitht"
   tagline = "Gaming Club IITH"
-  description = "Full-stack web developer and UI/UX enthusiast based in San Diego, CA."
+  description = "Glitch is the gaming club of IITH."
   logoBig = "/images/logo-nobg.png"
   logoSmall = "/images/logo-nobg.png"
   favicon = "favicon.ico"
