@@ -5,7 +5,7 @@
 
     <div class="team_cont">
         {{ range .Site.Params.team}}
-            {{ if or (eq .position "Coordinator") (eq .position "Mentor") }}
+            {{ if or (eq .position "Overall Head") (eq .position "Mentor") }}
                 <div class="team_main">
                     <a target="_base" href="{{ .twitch_url}}"><div class="stream"><img class="stream__thumbnail" src="{{ .url }}"></div></a>
                     <div class="details">

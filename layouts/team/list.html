@@ -8,7 +8,7 @@
       <section class="team_container">
         <section class="content">
           <h1 class="team_heading">{{ if .Params.heading }} {{ .Params.heading }} {{ else }} {{ .Title }} {{ end }}</h1>
-{{/*  
+{{/*
           <div class="pos_head"> Mentor </div>
           <div class="team_cont">
               {{ range .Site.Params.team}}
@@ -27,10 +27,10 @@
           </div>
 
 
-        <div class="pos_head"> Coordinator </div>
+        <div class="pos_head"> Head </div>
         <div class="team_cont">
             {{ range .Site.Params.team}}
-                {{ if eq .position "Coordinator"}}
+                {{ if eq .position "Head"}}
                     <div class="team_main">
                         <a target="_base" href="{{ .twitch_url}}"><div class="stream"><img class="stream__thumbnail" src="{{ .url }}"></div></a>
                         <div class="details">
@@ -80,10 +80,10 @@
                 </div>
             {{ end}}
 
-            {{ if .coordinator }}
-                <div class="pos_head"> Coordinator </div>
+            {{ if .head }}
+                <div class="pos_head"> Heads </div>
                 <div class="team_cont">
-                    {{ range .coordinator }}
+                    {{ range .head }}
                             <div class="team_main">
                                 <a target="_base" href="{{ .twitch_url }}"><div class="stream"><img class="stream__thumbnail member_photo" src="{{ .url }}"></div></a>
                                 <div class="details">
@@ -98,7 +98,7 @@
             {{ end}}
 
             {{ if .core }}
-            <div class="pos_head"> Core </div>
+            <div class="pos_head"> Cores </div>
             <div class="team_cont">
                 {{ range .core }}
                         <div class="team_main">
@@ -116,7 +116,7 @@
 
         {{ end }}
 
-        
+
 
 
 

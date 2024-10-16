@@ -6,8 +6,13 @@ config = "config.toml"
 theme = "osprey"
 canonifyURLS = true
 googleAnalytics = ""
-disqusShortname = "tomanistor"
+
 disableKinds = ["taxonomy", "taxonomyTerm"] # This theme does not currently use "tag" and "category" taxonomies
+
+[services]
+  [services.disqus]
+    shortname = "tomanistor"
+
 
 [Params]
   tagline = "Osprey Example Site"

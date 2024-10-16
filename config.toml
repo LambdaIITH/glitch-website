@@ -43,7 +43,7 @@ theme = 'osprey'
   lazyloading = true
 
   custom_css = ["css/custom_css.css","css/glitch_effect.css","css/twitch_hover.css","css/team.css"]
-  
+
   # Background Video For Website
   promo_video = "video/glitch_promo.mp4"
 
@@ -69,9 +69,3 @@ theme = 'osprey'
   name = "Team"
   url  = "/#team"
   weight = 4
-
-
-
-
-
-

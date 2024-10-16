@@ -9,9 +9,7 @@
     <!-- End Google Tag Manager -->
   {{ end }}
 
-  {{ if .Site.GoogleAnalytics }}
-    {{ template "_internal/google_analytics_async.html" . }}
-  {{ end }}
+
 
   <title>
     {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
@@ -74,7 +72,7 @@
   {{ end }}
 
   <link rel="canonical" href="{{ .Permalink }}">
-  
+
   {{ with .OutputFormats.Get "RSS" }}
     <link href="{{ .Permalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}">
   {{ end }}

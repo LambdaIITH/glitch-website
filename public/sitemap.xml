@@ -1,0 +1,19 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+    <url>
+      <loc>//localhost:1313/events/glitchxomen/</loc>
+      <lastmod>2024-08-10T10:00:00+05:30</lastmod>
+    </url>
+  
+    <url>
+      <loc>//localhost:1313/about/</loc>
+      <lastmod>2023-01-14T00:12:20+05:30</lastmod>
+    </url>
+  
+    <url>
+      <loc>//localhost:1313/blog/azure-wireguard-setup/</loc>
+      <lastmod>2023-01-13T08:45:07+05:30</lastmod>
+    </url>
+  
+</urlset>
