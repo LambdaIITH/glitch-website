@@ -99,15 +99,9 @@ body {
   font: 400 var(--b-body)/1.6 var(--font-body);
 }
 
-/* Headings look like the logo's "Glitch": Work Sans SemiBold in Title Case with the logo's colour split, and the same
-   line and letter spacing at every size. Labels stay in Big Shoulders. Running text is in sentence case. */
+/* Headings use Work Sans SemiBold, the typeface of the logo's "Glitch", in Title Case, with the same line and letter
+   spacing at every size. Labels stay in Big Shoulders. Running text is in sentence case. */
 h1, h2, h3 { margin: 0 0 var(--u2); font-family: var(--font-heading); font-weight: 600; line-height: 1.1; letter-spacing: 0; text-wrap: balance; }
-/* The split filters (Base.astro) are in pixels: about 1px of offset per 28px of type, as in the logo */
-h2, h3, .split-s { filter: url(#split-1); }
-h1, .split-m { filter: url(#split-2); }
-@media (min-width: 960px) { h2 { filter: url(#split-2); } }
-@media (min-width: 1100px) { h1 { filter: url(#split-3); } }
-@media (forced-colors: active) { h1, h2, h3, .split-s, .split-m, .loader .word { filter: none; } }
 .defs { position: absolute; width: 0; height: 0; overflow: hidden; }
 h1 { font-size: clamp(2.75rem, 7vw, 5.5rem); }
 h2 { font-size: clamp(2rem, 4.5vw, 3.25rem); }
@@ -190,29 +184,13 @@ img, svg, video { display: block; max-width: 100%; height: auto; }
     radial-gradient(ellipse at center, rgb(0 0 0 / 0) 55%, rgb(0 0 0 / 0.55) 100%);
 }
 
-/* RGB-split glitch: red and teal copies of the text jitter in slices. Needs data-text on the element. */
-.glitch { position: relative; }
-.glitch::before, .glitch::after {
-  content: attr(data-text); position: absolute; inset: 0; pointer-events: none; opacity: 0;
-}
-.glitch::before { color: var(--red); transform: translateX(-3px); }
-.glitch::after { color: var(--cool); transform: translateX(3px); mix-blend-mode: screen; }
-.is-glitching::before { animation: glitch-a 0.42s steps(2) both; }
-.is-glitching::after { animation: glitch-b 0.42s steps(2) both; }
-@keyframes glitch-a {
-  0% { opacity: 1; clip-path: inset(10% 0 70% 0); transform: translate(-4px, 0); }
-  25% { clip-path: inset(55% 0 20% 0); transform: translate(3px, 1px); }
-  50% { clip-path: inset(30% 0 50% 0); transform: translate(-2px, -1px); }
-  75% { clip-path: inset(80% 0 5% 0); transform: translate(4px, 0); }
-  100% { opacity: 0; clip-path: inset(0 0 100% 0); }
-}
-@keyframes glitch-b {
-  0% { opacity: 1; clip-path: inset(65% 0 15% 0); transform: translate(4px, 0); }
-  25% { clip-path: inset(15% 0 60% 0); transform: translate(-3px, -1px); }
-  50% { clip-path: inset(45% 0 35% 0); transform: translate(2px, 1px); }
-  75% { clip-path: inset(5% 0 85% 0); transform: translate(-4px, 0); }
-  100% { opacity: 0; clip-path: inset(0 0 100% 0); }
-}
+/* Glitch: the logo's colour split (the filters in Base.astro) flickers on text for under half a second, so headings are
+   always clean to read. effects.ts runs it on load, on hover, and now and then on one heading in view. */
+.is-glitching { animation: logo-split 0.45s step-end both; }
+h1 .is-glitching, h1.is-glitching, .loader .is-glitching { animation-name: logo-split-lg; }
+@keyframes logo-split { 0% { filter: url(#split-1); } 30% { filter: url(#split-2); } 55% { filter: url(#split-1); } 80%, 100% { filter: none; } }
+@keyframes logo-split-lg { 0% { filter: url(#split-2); } 30% { filter: url(#split-3); } 55% { filter: url(#split-2); } 80%, 100% { filter: none; } }
+@media (forced-colors: active) { .is-glitching { animation: none; } }
 /* The same split for images and tiles, done with stacked drop shadows */
 .glitch-img.is-glitching { animation: glitch-img 0.42s steps(3) both; }
 @keyframes glitch-img {
@@ -238,7 +216,7 @@ img, svg, video { display: block; max-width: 100%; height: auto; }
 .loader .parade img:nth-child(3) { animation-delay: 0.16s, 0.16s; }
 .loader .parade img:nth-child(4) { animation-delay: 0.24s, 0.24s; }
 .loader .parade img:nth-child(5) { animation-delay: 0.32s, 0.32s; }
-.loader .word { margin: 0; font: 600 clamp(3.5rem, 12vw, 7rem)/1.1 var(--font-heading); filter: url(#split-3); }
+.loader .word { margin: 0; font: 600 clamp(3.5rem, 12vw, 7rem)/1.1 var(--font-heading); }
 .loader .bar { width: min(320px, 70vw); height: 11px; background: var(--panel-2); }
 .loader .bar span { display: block; height: 100%; background: var(--accent); animation: fill 1.6s steps(20) both; }
 .loader button { font: 600 var(--b-small)/1 var(--font-body); color: var(--soft); background: none; border: 0; padding: var(--u1); text-decoration: underline; }
@@ -253,7 +231,7 @@ img, svg, video { display: block; max-width: 100%; height: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .is-glitching::before, .is-glitching::after, .glitch-img.is-glitching { animation: none; }
+  .is-glitching, .glitch-img.is-glitching { animation: none; }
   .fx [data-reveal] { opacity: 1; transform: none; transition: none; }
 }
 

@@ -20,8 +20,8 @@ interface Props {
   skip?: { href: string; label: string };
 }
 const { title, description, current, noindex = false, skip } = Astro.props;
-// The logo's colour split, used on headings: a pink copy left and down, a cyan copy right and up, white where they
-// overlap. Offsets are in pixels, so there is one filter per heading size (see global.css).
+// The logo's colour split for glitches: a pink copy left and down, a cyan copy right and up, white where they overlap.
+// Offsets are in pixels, so small and big text use different ones (see .is-glitching in global.css).
 const splits = [1, 2, 3];
 const fullTitle = title ? `${title} · Glitch` : 'Glitch, The Video Game Club of IITH';
 // every game's hero, cut from the club's own builds and itch.io art, shown at 4x

@@ -106,8 +106,8 @@ Jam entries belong to their makers: ask them before showing their art.
 
 Self-hosted from `src/fonts/`, all under the SIL Open Font License:
 
-- [Work Sans](https://fonts.google.com/specimen/Work+Sans) SemiBold: the typeface of the logo's "Glitch", for every heading, in Title Case,
-  with the logo's pink and cyan colour split (SVG filters in `src/layouts/Base.astro`).
+- [Work Sans](https://fonts.google.com/specimen/Work+Sans) SemiBold: the typeface of the logo's "Glitch", for every heading, in Title Case.
+  Glitches flash the logo's pink and cyan split for under half a second (SVG filters in `src/layouts/Base.astro`).
 - [Big Shoulders Display](https://fonts.google.com/specimen/Big+Shoulders+Display) Black: small labels, in Title Case. Running text is in
   sentence case.
 - [Departure Mono](https://departuremono.com) by Helena Zhang: numbers, dates and scores. Drawn on an

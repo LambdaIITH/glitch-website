@@ -45,9 +45,9 @@ const icons = ['arrow', 'back', 'external', 'play', 'pause', 'stairs', 'door', '
     <section>
       <h2>Type</h2>
       <p class="spec-1">Big Headlines</p>
-      <p class="small soft">Work Sans SemiBold, the typeface of the logo's "Glitch", with the logo's colour split: a pink copy left, a cyan copy right, white where they overlap. Every heading, in Title Case.</p>
+      <p class="small soft">Work Sans SemiBold, the typeface of the logo's "Glitch", for every heading, in Title Case.</p>
       <h3>Smaller Headings in Title Case</h3>
-      <p class="small soft">Work Sans SemiBold, 24px, with a 1px split.</p>
+      <p class="small soft">Work Sans SemiBold, 24px.</p>
       <p class="num spec-2">Score 1,42,188</p>
       <p class="small soft">Departure Mono for numbers, dates and scores, only at multiples of 11px. <span class="label">Labels Use Big Shoulders, Small and in Title Case</span></p>
       <p>Atkinson Hyperlegible Next for everything you read. Titles, labels, buttons and navigation are in Title Case; running text is in sentence case.</p>
@@ -94,7 +94,7 @@ const icons = ['arrow', 'back', 'external', 'play', 'pause', 'stairs', 'door', '
         <li><b>Sprite loader:</b> on a first visit only, the five heroes run across while the page loads, then the screen dissolves into pixels. Skippable with a click or any key.</li>
         <li><b>Footage:</b> gameplay loops behind the Home banner and on game pages, under scanlines. They only play while on screen.</li>
         <li><b>Pixel dissolve:</b> tiles and screenshots build in from pixel blocks as they scroll into view; banner slides dissolve into each other.</li>
-        <li><b>RGB-split glitch:</b> page titles glitch once on load; the logo, tiles and links glitch on hover and focus.</li>
+        <li><b>Glitch:</b> the logo's pink and cyan split flickers on text for under half a second. Page titles glitch once on load; the logo, tiles and links on hover and focus; and every 7 to 13 seconds one heading on screen glitches, but only while the tab is visible, nothing is being selected and the pointer isn't on it.</li>
         <li><b>Tilt:</b> game tiles lean toward the pointer on desktop.</li>
         <li><b>Sound:</b> small synthesised blips on hover and click, off until turned on in the header.</li>
         <li><b>Always:</b> nothing traps scrolling or blocks reading; with reduced motion every effect is off and footage shows a still; without JavaScript every page is complete.</li>
@@ -109,7 +109,7 @@ const icons = ['arrow', 'back', 'external', 'play', 'pause', 'stairs', 'door', '
   .swatches li { display: grid; grid-template-columns: var(--u4) 1fr; gap: var(--u2); align-items: start; }
   .swatch { display: block; width: var(--u4); height: var(--u4); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.15); }
   code { font-family: var(--font-pixel); font-size: 22px; color: var(--amber); }
-  .spec-1 { margin: 0; font: 600 clamp(2.75rem, 7vw, 5.5rem)/1.1 var(--font-heading); filter: url(#split-3); }
+  .spec-1 { margin: 0; font: 600 clamp(2.75rem, 7vw, 5.5rem)/1.1 var(--font-heading); }
   .spec-2 { margin: var(--u3) 0 6px; font-size: 44px; color: var(--amber); }
   .row { display: flex; flex-wrap: wrap; gap: var(--u2); align-items: center; }
   .tile-demo { max-width: 320px; }

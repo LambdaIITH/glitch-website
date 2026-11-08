@@ -56,6 +56,19 @@ for (const el of document.querySelectorAll('[data-glitch-hover]')) {
   el.addEventListener('pointerenter', () => glitch(target));
   el.addEventListener('focusin', () => glitch(target));
 }
+// Now and then, one heading in view glitches. Skipped while the tab is hidden, text is selected or the pointer is on it.
+function idleGlitch() {
+  const sel = document.getSelection();
+  if (!document.hidden && (!sel || sel.isCollapsed)) {
+    const inView = [...document.querySelectorAll('h1 .glitch, h2, .brand .glitch')].filter((el) => {
+      const r = el.getBoundingClientRect();
+      return r.bottom > 0 && r.top < innerHeight && !el.matches(':hover');
+    });
+    if (inView.length) glitch(inView[Math.floor(Math.random() * inView.length)]);
+  }
+  setTimeout(idleGlitch, 7000 + Math.random() * 6000);
+}
+if (!reduce) setTimeout(idleGlitch, 7000 + Math.random() * 6000);
 
 /* ---------- Pixel dissolve: a grid of background-coloured blocks clears in random order ---------- */
 export function dissolve(el: HTMLElement, colour = getComputedStyle(root).getPropertyValue('--bg'), ms = 650) {
