@@ -99,9 +99,16 @@ body {
   font: 400 var(--b-body)/1.6 var(--font-body);
 }
 
-/* Headings are set like the logo's "Glitch": Work Sans Bold in Title Case, with the same line and letter spacing at
-   every size. Labels stay in Big Shoulders. Running text is in sentence case. */
-h1, h2, h3 { margin: 0 0 var(--u2); font-family: var(--font-heading); font-weight: 700; line-height: 1.1; letter-spacing: 0; text-wrap: balance; }
+/* Headings look like the logo's "Glitch": Work Sans SemiBold in Title Case with the logo's colour split, and the same
+   line and letter spacing at every size. Labels stay in Big Shoulders. Running text is in sentence case. */
+h1, h2, h3 { margin: 0 0 var(--u2); font-family: var(--font-heading); font-weight: 600; line-height: 1.1; letter-spacing: 0; text-wrap: balance; }
+/* The split filters (Base.astro) are in pixels: about 1px of offset per 28px of type, as in the logo */
+h2, h3, .split-s { filter: url(#split-1); }
+h1, .split-m { filter: url(#split-2); }
+@media (min-width: 960px) { h2 { filter: url(#split-2); } }
+@media (min-width: 1100px) { h1 { filter: url(#split-3); } }
+@media (forced-colors: active) { h1, h2, h3, .split-s, .split-m, .loader .word { filter: none; } }
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
 h1 { font-size: clamp(2.75rem, 7vw, 5.5rem); }
 h2 { font-size: clamp(2rem, 4.5vw, 3.25rem); }
 h3 { font-size: 1.5rem; }
@@ -231,7 +238,7 @@ img, svg, video { display: block; max-width: 100%; height: auto; }
 .loader .parade img:nth-child(3) { animation-delay: 0.16s, 0.16s; }
 .loader .parade img:nth-child(4) { animation-delay: 0.24s, 0.24s; }
 .loader .parade img:nth-child(5) { animation-delay: 0.32s, 0.32s; }
-.loader .word { margin: 0; font: 700 clamp(3.5rem, 12vw, 7rem)/1.1 var(--font-heading); }
+.loader .word { margin: 0; font: 600 clamp(3.5rem, 12vw, 7rem)/1.1 var(--font-heading); filter: url(#split-3); }
 .loader .bar { width: min(320px, 70vw); height: 11px; background: var(--panel-2); }
 .loader .bar span { display: block; height: 100%; background: var(--accent); animation: fill 1.6s steps(20) both; }
 .loader button { font: 600 var(--b-small)/1 var(--font-body); color: var(--soft); background: none; border: 0; padding: var(--u1); text-decoration: underline; }

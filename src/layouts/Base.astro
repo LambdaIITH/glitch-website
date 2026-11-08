@@ -20,6 +20,9 @@ interface Props {
   skip?: { href: string; label: string };
 }
 const { title, description, current, noindex = false, skip } = Astro.props;
+// The logo's colour split, used on headings: a pink copy left and down, a cyan copy right and up, white where they
+// overlap. Offsets are in pixels, so there is one filter per heading size (see global.css).
+const splits = [1, 2, 3];
 const fullTitle = title ? `${title} · Glitch` : 'Glitch, The Video Game Club of IITH';
 // every game's hero, cut from the club's own builds and itch.io art, shown at 4x
 const parade = [
@@ -41,6 +44,19 @@ const parade = [
     <meta name="theme-color" content="#141113" />
   </head>
   <body>
+    <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+      {splits.map((d) => (
+        <filter id={`split-${d}`} color-interpolation-filters="sRGB" x="-5%" y="-10%" width="110%" height="120%">
+          <feOffset in="SourceAlpha" dx={-d} dy={d / 4} result="a" />
+          <feOffset in="SourceAlpha" dx={d} dy={-d / 4} result="b" />
+          <feFlood flood-color="#e85070" /><feComposite in2="a" operator="in" result="pink" />
+          <feFlood flood-color="#18f0f0" /><feComposite in2="b" operator="in" result="cyan" />
+          <feComposite in="a" in2="b" operator="in" result="both" />
+          <feFlood flood-color="#f8f8f8" /><feComposite in2="both" operator="in" result="white" />
+          <feMerge><feMergeNode in="pink" /><feMergeNode in="cyan" /><feMergeNode in="white" /></feMerge>
+        </filter>
+      ))}
+    </svg>
     {skip && <a class="skip-link" href={skip.href}>{skip.label}</a>}
     <a class="skip-link" href="#main">Skip to Content</a>
     <SiteHeader current={current} />
