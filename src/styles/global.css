@@ -1,0 +1,243 @@
+/* Glitch design system: "Glitch arcade" on the Ember palette.
+   The style guide at /styleguide/ shows every piece of this file. */
+
+@font-face {
+  font-family: "Big Shoulders Display";
+  src: url("../fonts/big-shoulders-900.woff2") format("woff2");
+  font-weight: 900;
+  font-display: swap;
+}
+/* Departure Mono is drawn on an 11px pixel grid: only use it at whole multiples of 11px. */
+@font-face {
+  font-family: "Departure Mono";
+  src: url("../fonts/departure-mono.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("../fonts/atkinson-next-latin.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Only downloaded when a page uses one of these characters, e.g. the rupee sign. */
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("../fonts/atkinson-next-latin-ext.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  color-scheme: dark;
+  /* Ember: a warm charcoal with the logo's own colours. Ratios are against --bg. */
+  --bg: #141113;
+  --panel: #1f1a1d;
+  --panel-2: #2a2327;
+  --line: #3b3236;       /* decorative lines only */
+  --text: #f3ece4;       /* 16.0:1 */
+  --soft: #b7aca3;       /* 8.4:1, 6.9:1 on panel-2 */
+  --accent: #ff5a1f;     /* main actions, 6.0:1; dark text on it 6.0:1 */
+  --amber: #ffb547;      /* links, focus, highlights, 10.7:1 */
+  --red: #f03808;        /* logo red: glitch channel */
+  --orange: #d87840;     /* logo orange */
+  --cool: #2fd3c7;       /* second glitch channel only, never for text */
+
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-pixel: "Departure Mono", ui-monospace, Menlo, Consolas, monospace;
+  --font-body: "Atkinson Hyperlegible Next", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --b-lead: 1.25rem;
+  --b-body: 1.0625rem;
+  --b-small: 0.9375rem;
+
+  /* Space in 11px units; one tile = 44px, the smallest touch target */
+  --u1: 11px;
+  --u2: 22px;
+  --u3: 33px;
+  --u4: 44px;
+  --u6: 66px;
+  --u8: 88px;
+  --u12: 132px;
+  --gutter: var(--u2);
+  --measure: 40rem;
+  --page: 1320px;
+  --step: 4px;           /* pixel-corner size */
+}
+@media (min-width: 768px) {
+  :root { --b-body: 1.125rem; --gutter: var(--u4); }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: var(--u8); }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 var(--b-body)/1.6 var(--font-body);
+}
+
+/* Big headlines: heavy, condensed, in capitals. Everything smaller stays in sentence case. */
+h1, h2, h3 { margin: 0 0 var(--u2); font-weight: 900; text-wrap: balance; }
+h1, h2 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.9;
+}
+h1 { font-size: clamp(3.25rem, 9vw, 8rem); }
+h2 { font-size: clamp(2.5rem, 6vw, 4.75rem); }
+h3 { font-family: var(--font-display); font-size: 1.875rem; line-height: 1; letter-spacing: 0.01em; }
+
+p, ul, ol { margin: 0 0 var(--u2); }
+p { max-width: var(--measure); text-wrap: pretty; }
+.lead { font-size: var(--b-lead); line-height: 1.5; }
+.small { font-size: var(--b-small); }
+.soft { color: var(--soft); }
+.label { font: 400 11px/1.2 var(--font-pixel); text-transform: none; letter-spacing: 0.04em; color: var(--amber); }
+.num { font-family: var(--font-pixel); font-size: 22px; line-height: 1; font-variant-numeric: tabular-nums; }
+
+a { color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+a:hover { color: var(--text); }
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+img, svg, video { display: block; max-width: 100%; height: auto; }
+.icon, .brand { flex: none; }
+
+.wrap { max-width: var(--page); margin-inline: auto; padding-inline: var(--gutter); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.skip-link {
+  position: absolute; left: var(--gutter); top: var(--u1); z-index: 100;
+  padding: var(--u1) var(--u2); background: var(--amber); color: var(--bg); font-weight: 700;
+  transform: translateY(-300%);
+}
+.skip-link:focus { transform: none; }
+
+/* Buttons: pixel-stepped corners drawn on a background layer, so focus rings are never clipped */
+.btn {
+  position: relative; isolation: isolate;
+  display: inline-flex; align-items: center; gap: var(--u1);
+  min-height: var(--u4); padding: 0 var(--u2);
+  color: var(--bg); font: 800 var(--b-body)/1.2 var(--font-body);
+  text-decoration: none; cursor: pointer; border: 0; background: none;
+}
+.btn::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; background: var(--accent);
+  clip-path: polygon(0 var(--step), var(--step) var(--step), var(--step) 0, calc(100% - var(--step)) 0, calc(100% - var(--step)) var(--step), 100% var(--step),
+    100% calc(100% - var(--step)), calc(100% - var(--step)) calc(100% - var(--step)), calc(100% - var(--step)) 100%, var(--step) 100%, var(--step) calc(100% - var(--step)), 0 calc(100% - var(--step)));
+}
+.btn:hover { color: var(--bg); }
+.btn:hover::before { background: var(--amber); }
+.btn-quiet { color: var(--text); }
+.btn-quiet::before { background: var(--panel-2); }
+.btn-quiet:hover { color: var(--bg); }
+.btn .icon { width: 22px; }
+
+/* Pixel icons inline with text */
+.link-icon { display: inline-flex; align-items: center; gap: 6px; }
+.link-icon .icon { width: 11px; }
+
+/* Tags: a legend square in one of the logo's colours plus a word */
+.tag { display: inline-flex; align-items: center; gap: var(--u1); font: 600 var(--b-small)/1.2 var(--font-body); color: var(--text); }
+.tag::before { content: ""; width: var(--u1); height: var(--u1); background: var(--swatch); box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--soft); }
+.tag[data-kind="game-dev"] { --swatch: var(--orange); }
+.tag[data-kind="esports"] { --swatch: var(--red); }
+.tag[data-kind="community"] { --swatch: var(--amber); }
+
+.placeholder { display: inline-block; padding: 0 var(--u1); border: 2px dashed var(--soft); color: var(--soft); font: 600 var(--b-small)/1.6 var(--font-body); }
+
+/* Scoreboards */
+.board { width: 100%; border-collapse: collapse; }
+.board caption { text-align: left; font-weight: 700; padding-bottom: var(--u1); }
+.board th { text-align: left; font: 600 var(--b-small)/1.2 var(--font-body); color: var(--soft); padding: var(--u1) var(--u1) var(--u1) 0; border-bottom: 2px solid var(--amber); }
+.board td { height: var(--u4); padding: var(--u1) var(--u1) var(--u1) 0; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.board .num { text-align: right; white-space: nowrap; padding-right: 0; }
+.board th.num { font: 600 var(--b-small)/1.2 var(--font-body); }
+.board td.rank { width: var(--u4); text-align: left; padding-right: var(--u1); color: var(--amber); }
+.board tbody tr:first-child td { color: var(--amber); }
+
+/* ---------- Effects. Every one is off with reduced motion, and none is needed to read the page. ---------- */
+
+/* CRT layer over footage: scanlines and a soft vignette */
+.crt { position: relative; overflow: hidden; }
+.crt::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
+  background:
+    repeating-linear-gradient(to bottom, rgb(0 0 0 / 0) 0 2px, rgb(0 0 0 / 0.28) 2px 3px),
+    radial-gradient(ellipse at center, rgb(0 0 0 / 0) 55%, rgb(0 0 0 / 0.55) 100%);
+}
+
+/* RGB-split glitch: red and teal copies of the text jitter in slices. Needs data-text on the element. */
+.glitch { position: relative; }
+.glitch::before, .glitch::after {
+  content: attr(data-text); position: absolute; inset: 0; pointer-events: none; opacity: 0;
+}
+.glitch::before { color: var(--red); transform: translateX(-3px); }
+.glitch::after { color: var(--cool); transform: translateX(3px); mix-blend-mode: screen; }
+.is-glitching::before { animation: glitch-a 0.42s steps(2) both; }
+.is-glitching::after { animation: glitch-b 0.42s steps(2) both; }
+@keyframes glitch-a {
+  0% { opacity: 1; clip-path: inset(10% 0 70% 0); transform: translate(-4px, 0); }
+  25% { clip-path: inset(55% 0 20% 0); transform: translate(3px, 1px); }
+  50% { clip-path: inset(30% 0 50% 0); transform: translate(-2px, -1px); }
+  75% { clip-path: inset(80% 0 5% 0); transform: translate(4px, 0); }
+  100% { opacity: 0; clip-path: inset(0 0 100% 0); }
+}
+@keyframes glitch-b {
+  0% { opacity: 1; clip-path: inset(65% 0 15% 0); transform: translate(4px, 0); }
+  25% { clip-path: inset(15% 0 60% 0); transform: translate(-3px, -1px); }
+  50% { clip-path: inset(45% 0 35% 0); transform: translate(2px, 1px); }
+  75% { clip-path: inset(5% 0 85% 0); transform: translate(-4px, 0); }
+  100% { opacity: 0; clip-path: inset(0 0 100% 0); }
+}
+/* The same split for images and tiles, done with stacked drop shadows */
+.glitch-img.is-glitching { animation: glitch-img 0.42s steps(3) both; }
+@keyframes glitch-img {
+  0% { filter: drop-shadow(-4px 0 0 var(--red)) drop-shadow(4px 0 0 var(--cool)); transform: translate(2px, 0); }
+  50% { filter: drop-shadow(3px 0 0 var(--red)) drop-shadow(-3px 0 0 var(--cool)); transform: translate(-2px, 1px); }
+  100% { filter: none; transform: none; }
+}
+
+/* Scroll reveals: only hidden once the effects script is running (it adds .fx), so nothing is lost without it */
+.fx [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s steps(6); }
+.fx [data-reveal].is-in { opacity: 1; transform: none; }
+
+/* First-visit loader: the five heroes run across, then it dissolves away */
+.loader {
+  position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; align-content: center; gap: var(--u3);
+  background: var(--bg); color: var(--text); text-align: center;
+}
+.loader.is-leaving { background: transparent; }
+.loader.is-leaving > * { visibility: hidden; }
+.loader .parade { display: flex; align-items: flex-end; gap: var(--u4); }
+.loader .parade img { image-rendering: pixelated; height: auto; animation: hop 0.36s steps(2) infinite alternate, run 1.6s steps(16) both; }
+.loader .parade img:nth-child(2) { animation-delay: 0.08s, 0.08s; }
+.loader .parade img:nth-child(3) { animation-delay: 0.16s, 0.16s; }
+.loader .parade img:nth-child(4) { animation-delay: 0.24s, 0.24s; }
+.loader .parade img:nth-child(5) { animation-delay: 0.32s, 0.32s; }
+.loader .word { margin: 0; font: 900 clamp(3.5rem, 12vw, 7rem)/0.9 var(--font-display); text-transform: uppercase; letter-spacing: 0.02em; }
+.loader .bar { width: min(320px, 70vw); height: 11px; background: var(--panel-2); }
+.loader .bar span { display: block; height: 100%; background: var(--accent); animation: fill 1.6s steps(20) both; }
+.loader button { font: 600 var(--b-small)/1 var(--font-body); color: var(--soft); background: none; border: 0; padding: var(--u1); text-decoration: underline; }
+@keyframes hop { to { transform: translateY(-8px); } }
+@keyframes run { from { translate: -40vw 0; opacity: 0; } 15% { opacity: 1; } to { translate: 0 0; } }
+@keyframes fill { from { width: 0; } to { width: 100%; } }
+
+/* Pixel cursor on devices with a precise pointer */
+@media (pointer: fine) {
+  html { cursor: url("/cursors/arrow.png") 0 0, auto; }
+  a, button, label, summary, [role="button"] { cursor: url("/cursors/hand.png") 8 0, pointer; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-glitching::before, .is-glitching::after, .glitch-img.is-glitching { animation: none; }
+  .fx [data-reveal] { opacity: 1; transform: none; transition: none; }
+}
+
+/* Inner pages sit in the content column below the header */
+.page { padding-top: var(--u6); }

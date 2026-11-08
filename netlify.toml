@@ -1,0 +1,8 @@
+# Netlify build settings. Headers and redirects live in public/_headers and public/_redirects,
+# which Cloudflare Pages reads too, so the site can move between the two free hosts unchanged.
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "22"

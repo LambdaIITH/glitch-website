@@ -1,0 +1,329 @@
+[
+  {
+    "slug": "intro-to-game-engines-2024",
+    "title": "Intro to game engines",
+    "kind": "game-dev",
+    "type": "Workshop",
+    "start": "2024-09-19",
+    "time": "9:45 PM",
+    "venue": "A-LH1",
+    "summary": "A first look at game engines, building a small space-themed game in Unity. No experience needed."
+  },
+  {
+    "slug": "milan-2024-game-jam",
+    "title": "Milan 2024 game jam",
+    "kind": "game-dev",
+    "type": "Game jam",
+    "start": "2024-09-27",
+    "dateText": "Until 27 Sep",
+    "with": "With Milan",
+    "summary": "A five-day jam on the theme “City of beast”, solo or in teams of up to four, on any engine and any platform.",
+    "links": [{ "label": "Jam page on itch.io", "url": "https://itch.io/jam/glitch-milan-24" }]
+  },
+  {
+    "slug": "lock-and-load-2024",
+    "title": "Lock and Load",
+    "kind": "esports",
+    "type": "Tournament",
+    "start": "2024-09-22",
+    "end": "2024-09-26",
+    "venue": "ALH-1 and online",
+    "summary": "Five days of CODM, Valorant and Clash Royale, coordinated through hostel representatives.",
+    "details": [
+      "CODM day 1: 23 Sep, 10 PM at ALH-1",
+      "Valorant: 22–26 Sep, played from your own room",
+      "Clash Royale: 25–26 Sep"
+    ]
+  },
+  {
+    "slug": "glitch-spring-camp-2025",
+    "title": "Glitch Spring Camp 2025",
+    "kind": "game-dev",
+    "type": "Workshop",
+    "start": "2025-04-02",
+    "end": "2025-04-17",
+    "time": "9 PM",
+    "venue": "ALH-1",
+    "summary": "Four hands-on Unity sessions, from a first Pong game to a 3D FPS with parkour. Session tasks counted toward core team selection.",
+    "details": [
+      "2 Apr: Build your first game! (Pong)",
+      "5 Apr: Make your own 3D FPS game",
+      "8 Apr: Power up your 3D FPS game",
+      "17 Apr: Make your game epic"
+    ]
+  },
+  {
+    "slug": "glitch-x-omen-2025",
+    "title": "Glitch × Omen offline tournament",
+    "kind": "esports",
+    "type": "Tournament",
+    "start": "2025-08-12",
+    "time": "12–7:30 PM",
+    "venue": "SNCC Open Area",
+    "with": "With Omen",
+    "summary": "A one-day offline Tekken and Asphalt tournament, free to enter, with exclusive goodies for the winners."
+  },
+  {
+    "slug": "glitch-orientation-2025",
+    "title": "Glitch orientation",
+    "kind": "community",
+    "type": "Orientation",
+    "start": "2025-08-12",
+    "dateText": "Aug 2025",
+    "approx": true,
+    "venue": "Auditorium, A block",
+    "summary": "An introduction to the club and what we do, from gaming tournaments to game jams."
+  },
+  {
+    "slug": "rog-campus-showdown-2025",
+    "title": "ROG Campus Showdown: Valorant 2v2",
+    "kind": "esports",
+    "type": "Tournament",
+    "start": "2025-09-10",
+    "time": "From 12:30 PM",
+    "venue": "Pavilion Room, near Chai Amruth, New Hostels",
+    "with": "With Elan & nVision and ROG",
+    "summary": "A Valorant 2v2 team deathmatch tournament run by Elan & nVision in collaboration with Glitch.",
+    "details": ["Prize pool ₹20,000: ₹12,000 for first, ₹8,000 for second"],
+    "links": [{ "label": "Brackets on Challonge", "url": "https://challonge.com/8kv3693t" }]
+  },
+  {
+    "slug": "milan-2025-game-jam",
+    "title": "Milan 2025 game jam",
+    "kind": "game-dev",
+    "type": "Game jam",
+    "start": "2025-10-18",
+    "end": "2025-10-24",
+    "with": "With Milan",
+    "summary": "A six-day jam: use at least two of five themes, in a game that runs on a Windows PC. Solo or teams of up to four.",
+    "details": ["Themes: Inversion, Kinetic energy, No life is the same, Know your limits, Who is the hero"]
+  },
+  {
+    "slug": "milan-2025-website-game",
+    "title": "Milan 2025 website game",
+    "kind": "game-dev",
+    "type": "Website game",
+    "start": "2025-10-19",
+    "end": "2025-10-24",
+    "venue": "Online, desktop only",
+    "with": "With Milan",
+    "summary": "The inter-hostel website game: sign in with your college email, find five hidden minigames and score as much as you can. Each hostel's top 50 scores added up."
+  },
+  {
+    "slug": "milan-2025-esports",
+    "title": "Glitch × Milan esports",
+    "kind": "esports",
+    "type": "Tournament",
+    "start": "2025-10-22",
+    "dateText": "Oct 2025",
+    "approx": true,
+    "with": "With Milan",
+    "summary": "BGMI, Free Fire and Valorant, with one team per hostel entered through hostel representatives."
+  },
+  {
+    "slug": "institute-valorant-circuit-2026",
+    "title": "Institute Valorant Circuit",
+    "kind": "esports",
+    "type": "Tournament",
+    "start": "2026-01-30",
+    "end": "2026-02-01",
+    "time": "Auction 8 PM, 30 Jan",
+    "venue": "Auction at CHE-LH1 (ALH-1), matches online",
+    "summary": "A live player auction, then two days of online Valorant matches. You could sign up as a player to get drafted, as a bidder to build a team, or both."
+  },
+  {
+    "slug": "intro-to-game-dev-2026",
+    "title": "Intro to game dev",
+    "kind": "game-dev",
+    "type": "Workshop",
+    "start": "2026-02-12",
+    "time": "9 PM",
+    "venue": "CLH-2 (MAE-LH2)",
+    "summary": "A beginner session in Unity. No experience needed."
+  },
+  {
+    "slug": "glitch-spring-camp-2026",
+    "title": "Glitch Spring Camp 2026",
+    "kind": "game-dev",
+    "type": "Workshop",
+    "start": "2026-03-17",
+    "end": "2026-04-14",
+    "time": "9 PM",
+    "summary": "Six hands-on sessions building a 3D FPS game in Unity, with Blender modelling along the way.",
+    "details": [
+      "17 Mar, C-LH2: Build your own 3D FPS game",
+      "27 Mar, CHE-119: Build your own gun system",
+      "1 Apr, MAE-LH2: Make your own 3D models",
+      "9 Apr, MAE-LH3: Bring your 3D models to life",
+      "11 Apr, MAE-LH3: Level up your movement and audio",
+      "14 Apr, MAE-LH3: Finishing your game"
+    ],
+    "links": [{ "label": "Session 1 recap on YouTube", "url": "https://www.youtube.com/watch?v=EN5gpx45wm0" }]
+  },
+  {
+    "slug": "mobile-gaming-league-2026-03",
+    "title": "Mobile Gaming League",
+    "kind": "esports",
+    "type": "Tournament",
+    "start": "2026-03-23",
+    "end": "2026-03-29",
+    "venue": "Online",
+    "summary": "Our first Mobile Gaming League: BGMI, Free Fire and Clash Royale, played online in the evenings. Goodies and rewards for the winners.",
+    "details": ["Clash Royale: 23–25 Mar", "BGMI and Free Fire: 27–29 Mar"]
+  },
+  {
+    "slug": "freshers-game-jam-2026",
+    "title": "2026 Freshers' game jam",
+    "kind": "game-dev",
+    "type": "Game jam",
+    "start": "2026-08-04",
+    "end": "2026-08-11",
+    "summary": "A jam on the theme “Unintended side effects”, in teams of one to three. Anyone could enter, but only freshers could win, and AI-generated art, music or graphics meant disqualification.",
+    "links": [{ "label": "Jam page on itch.io", "url": "https://itch.io/jam/2026-iith-freshers-jam" }]
+  },
+  {
+    "slug": "college-rivals-season-4-2026",
+    "title": "College Rivals Season 4 on campus",
+    "kind": "esports",
+    "type": "Tournament",
+    "start": "2026-09-08",
+    "time": "1–7 PM",
+    "venue": "Old Mess Lawns",
+    "with": "With Elan & nVision and College Rivals",
+    "summary": "The College Rivals gaming truck on campus for a day: EA FC 25 on PS5s, chess, and BGMI squads and solos, with College Rivals merchandise for each game's winners."
+  },
+  {
+    "slug": "iith-pokemon-vgc-tournament-2026",
+    "title": "The first IITH Pokémon VGC tournament",
+    "kind": "esports",
+    "type": "Tournament",
+    "start": "2026-09-19",
+    "end": "2026-09-20",
+    "with": "With The Otaku Club",
+    "summary": "A Pokémon Champions tournament under Regulation M-C, with a training session for newcomers on 11 September. A community member offered the winner a shiny Pokémon of their choice.",
+    "details": ["Moved from 12–13 Sep"],
+    "links": [{ "label": "Tournament on start.gg", "url": "https://www.start.gg/tournament/iith-pok-mon-vgc-tournament-01/details" }]
+  },
+  {
+    "slug": "dell-campus-quest-2026",
+    "title": "Dell Campus Quest",
+    "kind": "esports",
+    "type": "Tournament",
+    "start": "2026-09-26",
+    "end": "2026-09-27",
+    "venue": "Old Mess Grounds",
+    "with": "With Milan and Dell",
+    "summary": "1v1 tournaments in Forza Horizon 6, EA FC 26, Tekken 8 and Street Fighter 6, plus an AI Creator Zone.",
+    "details": [
+      "Forza Horizon 6: ₹12,500 and ₹7,500 Amazon gift cards for first and second",
+      "EA FC 26, Tekken 8 and Street Fighter 6: ₹7,000 and ₹3,000 Amazon gift cards for first and second"
+    ],
+    "links": [{ "label": "Event page on theesports.club", "url": "https://theesports.club/events/dell-campus-quest-iit-hyderabadQrF1BU" }]
+  },
+  {
+    "slug": "milan-2026-game-jam",
+    "title": "Milan 2026 game jam",
+    "kind": "game-dev",
+    "type": "Game jam",
+    "start": "2026-09-26",
+    "end": "2026-10-02",
+    "with": "With Milan",
+    "summary": "A jam on the theme “Time is money”, solo or in squads of up to four, with entries counting toward each hostel's Milan score.",
+    "links": [{ "label": "Jam page on itch.io", "url": "https://itch.io/jam/glitch-milan-game-jam-26" }]
+  },
+  {
+    "slug": "cogito-milan-2026",
+    "title": "Cogito",
+    "kind": "game-dev",
+    "type": "Website game",
+    "start": "2026-09-29",
+    "end": "2026-10-04",
+    "venue": "Online at glitch.iith.dev",
+    "with": "With Milan",
+    "summary": "Our roguelike website game for Milan. Each hostel's top 50 scores counted toward its total.",
+    "links": [
+      { "label": "About Cogito", "url": "/games/cogito/" },
+      { "label": "Final standings", "url": "/scoreboard/#cogito" }
+    ]
+  },
+  {
+    "slug": "milan-2026-esports",
+    "title": "Glitch × Milan esports",
+    "kind": "esports",
+    "type": "Tournament",
+    "start": "2026-10-01",
+    "end": "2026-10-03",
+    "with": "With Milan",
+    "summary": "Three days of BGMI, Free Fire, Valorant and Rocket League, with one team per hostel per game."
+  },
+  {
+    "slug": "abhyanth-x-glitch-2026",
+    "title": "Abhyanth × Glitch: BGMI and Real Cricket 24",
+    "kind": "esports",
+    "type": "Tournament",
+    "start": "2026-10-08",
+    "end": "2026-10-10",
+    "with": "With Abhyanth and Krafton",
+    "summary": "An online BGMI round, offline qualifiers and a final for the top 16 teams, plus an offline Real Cricket 24 tournament. Free to enter.",
+    "details": ["Prize pools: ₹15,000 for BGMI, ₹5,000 for Real Cricket 24"]
+  },
+  {
+    "slug": "vgc-team-building-session-2026",
+    "title": "VGC team building session",
+    "kind": "esports",
+    "type": "Workshop",
+    "start": "2026-10-13",
+    "time": "9 PM",
+    "venue": "CHE-LH-01",
+    "with": "With The Otaku Club",
+    "summary": "Build a Regulation M-C team from scratch, then test teams in practice battles, with a bonus session on random battles."
+  },
+  {
+    "slug": "pokemon-showdown-tournaments-2026",
+    "title": "Pokémon Showdown random battle tournaments",
+    "kind": "esports",
+    "type": "Tournament",
+    "start": "2026-10-19",
+    "end": "2026-10-25",
+    "venue": "Online",
+    "with": "With The Otaku Club",
+    "summary": "Random singles on 19 October and random doubles on 22 October, then a final battle against Giratina, streamed live on 25 October.",
+    "links": [
+      { "label": "Singles on Limitless", "url": "https://play.limitlesstcg.com/tournament/6ab3e39ff127b1b52c2805fb/details" },
+      { "label": "Doubles on Limitless", "url": "https://play.limitlesstcg.com/tournament/6ad3149b8a8383117e3edb7a/details" },
+      { "label": "Final on YouTube", "url": "https://www.youtube.com/live/X_Q5ySoqdeQ" }
+    ]
+  },
+  {
+    "slug": "community-session-first-game-2026",
+    "title": "Community session: make your first game",
+    "kind": "game-dev",
+    "type": "Workshop",
+    "start": "2026-10-28",
+    "time": "9:30 PM",
+    "venue": "ALH-2 (CHE-LH2)",
+    "summary": "A beginner Unity session for making your first game. No experience needed; bring a laptop, a mouse and a charger."
+  },
+  {
+    "slug": "mobile-gaming-league-2026-10",
+    "title": "Mobile Gaming League",
+    "kind": "esports",
+    "type": "Tournament",
+    "start": "2026-10-30",
+    "end": "2026-11-01",
+    "summary": "Three games, three days and one big LAN finale: Free Fire, Clash Royale and EA FC Mobile.",
+    "details": ["Prize pools: ₹7,000 for Free Fire, ₹2,000 for Clash Royale, ₹2,000 for EA FC Mobile"]
+  },
+  {
+    "slug": "red-bull-wings-cup-qualifier-2026",
+    "title": "Red Bull Wings Cup university qualifier",
+    "kind": "esports",
+    "type": "Tournament",
+    "start": "2026-10-31",
+    "end": "2026-11-01",
+    "venue": "Recreational Rooms near Aryabhatta Hostel",
+    "with": "With Elan & nVision (Nexus 4.0) and Red Bull",
+    "summary": "An FC 27 leaderboard qualifier: everyone plays once, with a second attempt available.",
+    "links": [{ "label": "Red Bull Wings Cup page", "url": "https://redbull.com/in-en/events/red-bull-wings-cup-india-2026/red-bull-wings-cup-india-university-league" }]
+  }
+]

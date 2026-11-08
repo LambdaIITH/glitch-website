@@ -1,0 +1,3 @@
+# Read by both Cloudflare Pages and Netlify. Old leaderboard links from club mails go to the hall of records.
+/leaderboard /scoreboard/ 301
+/leaderboard/ /scoreboard/ 301

@@ -1,0 +1,36 @@
+---
+// A muted gameplay loop under the CRT layer. It only plays while on screen, never with reduced motion,
+// and without JavaScript it is just its poster image.
+import { getImage } from 'astro:assets';
+import { image } from '../lib/images';
+
+interface Props { src: string; poster: string; label: string }
+const { src, poster, label } = Astro.props;
+const still = await getImage({ src: image(poster), width: 1280, format: 'webp' });
+---
+<figure class="footage">
+  <div class="crt"><video muted loop playsinline preload="none" poster={still.src} data-footage={src} aria-label={label}></video></div>
+  <figcaption class="small soft">{label}</figcaption>
+</figure>
+
+<style>
+  .footage { margin: 0; }
+  .crt { border: 1px solid var(--line); background: var(--bg); }
+  video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  figcaption { margin-top: var(--u1); }
+</style>
+
+<script>
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        const v = e.target as HTMLVideoElement;
+        if (e.isIntersecting) {
+          if (!v.src) v.src = v.dataset.footage!;
+          v.play().catch(() => {});
+        } else v.pause();
+      }
+    }, { threshold: 0.25 });
+    document.querySelectorAll('video[data-footage]').forEach((v) => io.observe(v));
+  }
+</script>

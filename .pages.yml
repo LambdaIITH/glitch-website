@@ -1,0 +1,275 @@
+# Pages CMS (https://pagescms.org): forms for the club heads to add and edit events, games and club details
+# without touching code. Club heads are invited as collaborators by email and sign in with a one-time code:
+# no GitHub account and no access to the code. Only maintainers sign in with GitHub (that needs repo write access).
+# Saving commits to the repo, and Netlify rebuilds the site (and the /api feeds) in about a minute.
+# The build re-checks everything typed here (src/lib/schema.ts), so an unsafe value fails the build.
+
+settings:
+  commit:
+    identity: user
+
+media:
+  - name: images
+    label: Images
+    input: src/assets/uploads
+    output: uploads
+    rename: safe
+    extensions: [png, jpg, jpeg, webp]
+
+content:
+  - name: events
+    label: Events
+    type: file
+    path: src/data/events.json
+    format: json
+    list: true
+    fields:
+      - name: draft
+        label: Draft
+        type: boolean
+        description: Ticked = hidden from the site and the SciTech feed. Untick when the details are final.
+      - name: slug
+        label: Link name
+        type: string
+        required: true
+        pattern:
+          regex: "^[a-z0-9-]+$"
+          message: Lowercase letters, numbers and dashes only, e.g. milan-2027-game-jam
+        description: Makes the event's link, e.g. glitch.iith.dev/events/#milan-2027-game-jam. Don't change it once published.
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: kind
+        label: Kind
+        type: select
+        required: true
+        options:
+          values:
+            - name: game-dev
+              label: Game dev
+            - name: esports
+              label: Esports
+            - name: community
+              label: Community
+      - name: type
+        label: Type
+        type: select
+        required: true
+        options:
+          values: [Game jam, Workshop, Tournament, Website game, Orientation, Talk, Other]
+      - name: start
+        label: Start date
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: end
+        label: End date
+        type: date
+        default: ""
+        description: Leave empty for one-day events.
+        options:
+          format: yyyy-MM-dd
+      - name: dateText
+        label: Date text
+        type: string
+        description: Only when the exact dates aren't known, e.g. "Aug 2025". Shown instead of the dates.
+      - name: approx
+        label: Start date is only the announcement date
+        type: boolean
+        description: Keeps the event out of the SciTech feed, which needs real dates.
+      - name: time
+        label: Time
+        type: string
+        description: e.g. 9 PM
+      - name: venue
+        label: Venue
+        type: string
+        description: e.g. ALH-1, or Online
+      - name: with
+        label: Co-hosts and sponsors
+        type: string
+        description: e.g. With Milan and Dell. Leave empty for Glitch-only events.
+      - name: summary
+        label: Summary
+        type: text
+        required: true
+        description: One or two sentences.
+      - name: details
+        label: Details
+        type: string
+        list: true
+        description: One fact per item, e.g. a prize pool or a session date.
+      - name: links
+        label: Links
+        type: object
+        list: true
+        description: Public pages only (itch.io, brackets, streams). Never Google Forms, Drive or WhatsApp links.
+        fields:
+          - name: label
+            label: Link text
+            type: string
+            required: true
+          - name: url
+            label: URL
+            type: string
+            required: true
+            pattern:
+              regex: "^(https://|/)"
+              message: Start with https:// (or / for a page on this site)
+      - name: image
+        label: Image
+        type: image
+        description: Optional poster or photo the club made or has the right to use.
+
+  - name: games
+    label: Games
+    type: file
+    path: src/data/games.json
+    format: json
+    list: true
+    fields:
+      - name: draft
+        label: Draft
+        type: boolean
+        description: Ticked = hidden from the site and the SciTech feed.
+      - name: slug
+        label: Link name
+        type: string
+        required: true
+        pattern:
+          regex: "^[a-z0-9-]+$"
+          message: Lowercase letters, numbers and dashes only, e.g. drippi-droppo
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: tagline
+        label: Tagline
+        type: string
+        description: Optional one-liner, e.g. "One tiny droplet vs. the environment."
+      - name: summary
+        label: Summary
+        type: text
+        required: true
+      - name: status
+        label: Status
+        type: select
+        required: true
+        options:
+          values: [Released, In development, Archived]
+      - name: genre
+        label: Genre
+        type: string
+        required: true
+        description: One word or two, e.g. Platformer
+      - name: platforms
+        label: Platforms
+        type: string
+        list: true
+        description: e.g. Windows, Android, Web
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+      - name: link
+        label: Where to play it
+        type: string
+        description: Usually the game's page on glitchiith.itch.io.
+        pattern:
+          regex: "^(https://|$)"
+          message: Start with https://
+      - name: image
+        label: Image
+        type: image
+        required: true
+        description: A screenshot or cover the team made. Landscape works best.
+      - name: alt
+        label: Image description
+        type: string
+        required: true
+        description: What the image shows, for people who can't see it.
+      - name: focus
+        label: Image focus
+        type: string
+        description: Optional. Which part of the image the tile shows, e.g. "75% 50%" for right of centre.
+        pattern:
+          regex: "^(\\d{1,3}% \\d{1,3}%)?$"
+          message: Two percentages, e.g. 78% 55%
+      - name: page
+        label: Page on this site
+        type: string
+        readonly: true
+        description: Set by a developer for games with their own page.
+      - name: linkText
+        label: Page link text
+        type: string
+        readonly: true
+      - name: footage
+        label: Gameplay clip
+        type: object
+        readonly: true
+        description: Set by a developer.
+        fields:
+          - name: src
+            type: string
+          - name: poster
+            type: string
+
+  - name: club
+    label: Club details
+    type: file
+    path: src/data/club.json
+    format: json
+    fields:
+      - name: email
+        label: Email
+        type: string
+        required: true
+      - name: discord
+        label: Discord invite
+        type: string
+        pattern:
+          regex: "^https://"
+          message: Start with https://
+        required: true
+        description: Use a permanent invite that never expires.
+      - name: itch
+        label: itch.io page
+        type: string
+        pattern:
+          regex: "^https://"
+          message: Start with https://
+      - name: instagram
+        label: Instagram
+        type: string
+        pattern:
+          regex: "^https://"
+          message: Start with https://
+      - name: linkedin
+        label: LinkedIn
+        type: string
+        pattern:
+          regex: "^https://"
+          message: Start with https://
+      - name: github
+        label: GitHub
+        type: string
+        pattern:
+          regex: "^https://"
+          message: Start with https://
+      - name: leads
+        label: Leads
+        type: object
+        list: true
+        description: Names and roles only. No phone numbers.
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: role
+            label: Role
+            type: string
+            required: true

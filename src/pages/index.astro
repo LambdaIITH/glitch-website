@@ -1,0 +1,126 @@
+---
+import Base from '../layouts/Base.astro';
+import FeatureBanner from '../components/FeatureBanner.astro';
+import GameTile from '../components/GameTile.astro';
+import Icon from '../components/Icon.astro';
+import Scoreboard from '../components/Scoreboard.astro';
+import { games } from '../lib/games';
+import cogito from '../data/cogito.json';
+import club from '../lib/club';
+import { events, upcoming, latest, today, kindLabel, when } from '../lib/events';
+
+const next = upcoming[0];
+const recent = events.filter((e) => e.start <= today).slice(0, 4);
+const slides = games.map((g) => ({
+  slug: g.slug, title: g.title, genre: g.genre, href: g.page || g.link || '/games/', external: !g.page && !!g.link, image: g.image, footage: g.footage,
+}));
+const tracks = [
+  { name: 'Glitch Blue', what: 'Code: programming our games.' },
+  { name: 'Glitch Red', what: 'Design: characters, assets and UI.' },
+  { name: 'Glitch Neon', what: 'Esports: running tournaments and leagues.' },
+];
+---
+<Base description="Glitch is the video game club of IIT Hyderabad. We make games, run game jams and host esports tournaments.">
+  <FeatureBanner slides={slides}>
+    <p class="label">The video game club of IIT Hyderabad</p>
+    <h1><span class="glitch" data-text="Glitch, the video game club of IITH" data-glitch-load>Glitch, the video game club of IITH</span></h1>
+    <p class="lead">We make games, run game jams and host esports tournaments.</p>
+    <p class="actions">
+      <a class="btn" href={club.discord}>Join the Discord <Icon name="external" /></a>
+      <a class="btn btn-quiet" href="/games/">See our games <Icon name="arrow" /></a>
+    </p>
+    <p class="next small">
+      {next ? (
+        <><span class="label">{next.start <= today ? 'On now' : 'Next event'}</span>{' '}<a href={`/events/#${next.slug}`}>{next.title}</a>, <span class="num">{when(next)}</span></>
+      ) : (
+        <><span class="label">Next event</span>{' '}to be announced on <a href={club.discord}>our Discord</a>.{latest && <> Last one: <a href={`/events/#${latest.slug}`}>{latest.title}</a>, {when(latest, true)}.</>}</>
+      )}
+    </p>
+  </FeatureBanner>
+
+  <section class="wrap block" aria-labelledby="games">
+    <div class="head" data-reveal>
+      <h2 id="games">Games</h2>
+      <p class="soft">Everything the club has shipped, from Milan website games to the ones on our itch.io page.</p>
+    </div>
+    <div class="wall">
+      {games.map((g) => <GameTile game={g as any} />)}
+    </div>
+    <p data-reveal><a class="link-icon" href="/games/">All games and jams <Icon name="arrow" /></a></p>
+  </section>
+
+  <section class="wrap block" aria-labelledby="events">
+    <div class="head" data-reveal>
+      <h2 id="events">Events</h2>
+      <p class="soft">Jams, workshops and tournaments, run by us or with other clubs and fests.</p>
+    </div>
+    <ul class="recent">
+      {recent.map((e) => (
+        <li data-reveal>
+          <span class="num">{when(e)}</span>
+          <a href={`/events/#${e.slug}`}>{e.title}</a>
+          <span class="tag" data-kind={e.kind}>{kindLabel[e.kind]}</span>
+        </li>
+      ))}
+    </ul>
+    <p data-reveal><a class="link-icon" href="/events/">All events <Icon name="arrow" /></a></p>
+  </section>
+
+  <section class="wrap block records" aria-labelledby="records">
+    <div class="head" data-reveal>
+      <h2 id="records">Hall of records</h2>
+      <p class="soft">Final standings from our competitive games, starting with Cogito at Milan 2026.</p>
+    </div>
+    <div data-reveal>
+      <Scoreboard
+        caption="Cogito, top 5 hostels"
+        columns={[
+          { key: 'hostel', label: 'Hostel' },
+          { key: 'players', label: 'Players counted', num: true, sub: 'players counted' },
+          { key: 'score', label: 'Total score', num: true },
+        ]}
+        rows={cogito.hostels.slice(0, 5)}
+      />
+    </div>
+    <p data-reveal><a class="link-icon" href="/scoreboard/">Full standings <Icon name="arrow" /></a></p>
+  </section>
+
+  <section class="join" aria-labelledby="join">
+    <div class="wrap join-inner" data-reveal>
+      <div>
+        <h2 id="join">Join the club</h2>
+        <p class="lead">The easiest way in is our Discord server, the Glitch Basement. Recruitment rounds are announced by mail and on Discord.</p>
+        <p class="actions"><a class="btn" href={club.discord}>Join the Discord <Icon name="external" /></a> <a class="btn btn-quiet" href="/join/">How joining works <Icon name="arrow" /></a></p>
+      </div>
+      <dl class="tracks">
+        {tracks.map((t) => (<><dt>{t.name}</dt><dd class="soft">{t.what}</dd></>))}
+      </dl>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: var(--u2); margin-top: var(--u3); }
+  .next { margin: var(--u3) 0 0; }
+  .next .label { margin-right: 6px; }
+  .block { margin-top: var(--u12); }
+  .head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 0 var(--u4); margin-bottom: var(--u3); }
+  .head h2, .head p { margin: 0; }
+  .wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 216px), 1fr)); gap: var(--u2); margin-bottom: var(--u3); }
+  .recent { list-style: none; padding: 0; margin: 0 0 var(--u3); border-top: 1px solid var(--line); }
+  .recent li {
+    display: grid; grid-template-columns: 1fr; gap: 6px var(--u3); align-items: center;
+    padding-block: var(--u2); border-bottom: 1px solid var(--line);
+  }
+  @media (min-width: 768px) { .recent li { grid-template-columns: 15rem 1fr auto; } }
+  .recent .num { color: var(--amber); }
+  .recent a { color: var(--text); font: 900 1.6rem/1.05 var(--font-display); text-decoration: none; }
+  .recent a:hover { color: var(--amber); text-decoration: underline 3px var(--accent); text-underline-offset: 6px; }
+  .records :global(.board) { max-width: 52rem; }
+  .join { margin-top: var(--u12); padding-block: var(--u8); background: var(--panel); border-block: 1px solid var(--line); }
+  .join-inner { display: grid; gap: var(--u4); align-items: center; }
+  @media (min-width: 900px) { .join-inner { grid-template-columns: 1.4fr 1fr; } }
+  .tracks { display: grid; gap: var(--u2); margin: 0; }
+  .tracks dt { font: 900 1.75rem/1 var(--font-display); color: var(--amber); }
+  .tracks dd { margin: 4px 0 0; }
+</style>

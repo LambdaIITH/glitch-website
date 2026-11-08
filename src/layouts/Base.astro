@@ -1,0 +1,66 @@
+---
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import display from '../fonts/big-shoulders-900.woff2?url';
+import body from '../fonts/atkinson-next-latin.woff2?url';
+import hero2025 from '../assets/sprites/hero-2025.png';
+import heroDrippi from '../assets/sprites/hero-drippi.png';
+import heroCogito from '../assets/sprites/hero-cogito.png';
+import heroPyro from '../assets/sprites/hero-pyrofrost.png';
+import heroRow from '../assets/sprites/hero-rowmance.png';
+
+interface Props {
+  title?: string;
+  description: string;
+  current?: string;
+  noindex?: boolean;
+  /** An extra skip link placed first. */
+  skip?: { href: string; label: string };
+}
+const { title, description, current, noindex = false, skip } = Astro.props;
+const fullTitle = title ? `${title} · Glitch` : 'Glitch, the video game club of IITH';
+// every game's hero, cut from the club's own builds and itch.io art, shown at 4x
+const parade = [
+  { src: hero2025, alt: '' }, { src: heroDrippi, alt: '' }, { src: heroCogito, alt: '' }, { src: heroPyro, alt: '' }, { src: heroRow, alt: '' },
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />}
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="preload" href={display} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={body} as="font" type="font/woff2" crossorigin />
+    <meta name="theme-color" content="#141113" />
+  </head>
+  <body>
+    {skip && <a class="skip-link" href={skip.href}>{skip.label}</a>}
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader current={current} />
+    <main id="main"><slot /></main>
+    <SiteFooter />
+
+    <template id="loader-template">
+      <div class="loader" role="presentation">
+        <p class="word glitch is-glitching" data-text="Glitch" aria-hidden="true">Glitch</p>
+        <div class="parade" aria-hidden="true">
+          {parade.map((p) => <img src={p.src.src} alt={p.alt} width={p.src.width * 4} height={p.src.height * 4} />)}
+        </div>
+        <div class="bar" aria-hidden="true"><span></span></div>
+        <button type="button">Skip intro</button>
+      </div>
+    </template>
+    <script>
+      import '../scripts/effects';
+    </script>
+  </body>
+</html>
+
+<style>
+  main { min-height: 60vh; }
+</style>

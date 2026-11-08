@@ -1,0 +1,108 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import Footage from '../../components/Footage.astro';
+import Scoreboard from '../../components/Scoreboard.astro';
+import cogito from '../../data/cogito.json';
+import { image } from '../../lib/images';
+
+const top = cogito.players[0];
+const shots = [
+  { src: 'cogito/boss.webp', alt: "Cogito's robot squaring up to a red armoured boss", caption: 'A boss fight, from the game’s own cutscene.' },
+  { src: 'cogito/title.webp', alt: 'Cogito title screen with Play, Tutorial and Settings buttons', caption: 'The title screen.' },
+  { src: 'cogito/room.webp', alt: 'The robot standing by a glowing portal in the first room, with health, score and stats on screen', caption: 'The first room. The bar at the bottom tracks which room of the floor you are in.' },
+  { src: 'cogito/shop.webp', alt: 'The upgrade shop offering Permaspeed, a temporary health boost and Permadefense', caption: 'The shop, where scrap buys upgrades.' },
+].map((s) => {
+  const meta = image(s.src);
+  // never ask for a wider file than the source
+  return { ...s, meta, widths: [...new Set([560, 1120].map((w) => Math.min(w, meta.width)))] };
+});
+const fmt = new Intl.NumberFormat('en-IN');
+---
+<Base title="Cogito" current="games" description="Cogito, Glitch's roguelike website game for Milan 2026: what it was, how scoring worked, and the final standings.">
+  <div class="wrap page">
+    <p class="crumb small"><a class="link-icon" href="/games/"><Icon name="back" /> Games</a></p>
+    <p class="label">Roguelike · Milan 2026</p>
+    <h1><span class="glitch" data-text="Cogito" data-glitch-load>Cogito</span></h1>
+    <p class="lead">Our website game for Milan 2026. You play a robot trying to break out of a facility of your own kin.</p>
+
+    <div class="hero" data-reveal>
+      <Footage src="/footage/cogito-run.mp4" poster="footage/cogito-poster.webp" label="A run through the first room, captured from the game's final build." />
+    </div>
+
+    <div class="about">
+      <div data-reveal>
+        <h2>The run</h2>
+        <p>Room layouts, enemies and upgrades are all randomly generated, so every run is different. As our launch mail put it: that's what we call a roguelike.</p>
+        <p>Cogito ran on glitch.iith.dev during Milan, and every run brought in points for your hostel block. Each hostel's top 50 scores counted toward its total, and the top 20 players made the main board.</p>
+        <h2>Play</h2>
+        <p class="play">
+          <span class="btn btn-quiet" aria-disabled="true">Free play on itch.io</span>
+          <span class="placeholder">Placeholder</span>
+        </p>
+        <p>The competition build came down with the boards. A free-play build without scores will go up on <a class="link-icon" href="https://glitchiith.itch.io/">our itch.io page <Icon name="external" /></a> once the dev team uploads it.</p>
+      </div>
+      <dl class="facts" data-reveal>
+        <dt>Made by</dt><dd>Glitch, for Milan 2026</dd>
+        <dt>Genre</dt><dd>Roguelike</dd>
+        <dt>Built with</dt><dd>Unity, played in the browser</dd>
+        <dt>Live</dt><dd>29 Sep – 4 Oct 2026</dd>
+        <dt>Status</dt><dd>Archived. The final standings are frozen.</dd>
+      </dl>
+    </div>
+
+    <h2 data-reveal>Screens</h2>
+    <ul class="shots">
+      {shots.map((s) => (
+        <li data-reveal data-dissolve>
+          <figure>
+            <div class="crt"><Image src={s.meta} alt={s.alt} widths={s.widths} sizes="(min-width: 1100px) 640px, 100vw" /></div>
+            <figcaption class="small soft">{s.caption}</figcaption>
+          </figure>
+        </li>
+      ))}
+    </ul>
+
+    <h2 data-reveal>Final standings</h2>
+    <p data-reveal>Top player: <strong>{top.name}</strong> of {top.hostel}, with a best score of <span class="num">{fmt.format(top.score)}</span>.</p>
+    <div data-reveal>
+      <Scoreboard
+        caption="Hostel standings, top 5 of 17"
+        columns={[
+          { key: 'hostel', label: 'Hostel' },
+          { key: 'players', label: 'Players counted', num: true, sub: 'players counted' },
+          { key: 'score', label: 'Total score', num: true },
+        ]}
+        rows={cogito.hostels.slice(0, 5)}
+      />
+    </div>
+    <p class="more"><a class="btn btn-quiet" href="/scoreboard/#cogito">Full standings <Icon name="arrow" /></a></p>
+  </div>
+</Base>
+
+<style>
+  .page { padding-top: var(--u6); }
+  .crumb { margin-bottom: var(--u3); font-weight: 700; }
+  .crumb :global(.icon) { width: 11px; }
+  .hero { margin-top: var(--u4); }
+  figure { margin: 0; }
+  .shots figure :global(img) { width: 100%; }
+  .shots .crt { border: 1px solid var(--line); }
+  figcaption { margin-top: var(--u1); }
+  .about { display: grid; gap: var(--u4); margin-top: var(--u8); }
+  @media (min-width: 900px) { .about { grid-template-columns: minmax(0, 1fr) 20rem; gap: var(--u8); } }
+  .about h2 { margin-top: 0; }
+  .about p + h2 { margin-top: var(--u6); }
+  .play { display: flex; flex-wrap: wrap; align-items: center; gap: var(--u2); }
+  .btn[aria-disabled='true'] { color: var(--soft); cursor: not-allowed; }
+  .btn[aria-disabled='true']::before { background: transparent; border: 2px dashed var(--line); }
+  .facts { margin: 0; padding: var(--u3); background: var(--panel); align-self: start; }
+  dt { font: 400 11px/1.4 var(--font-pixel); color: var(--amber); }
+  dd { margin: 2px 0 var(--u2); }
+  dd:last-child { margin-bottom: 0; }
+  h2 { margin-top: var(--u12); }
+  .shots { list-style: none; padding: 0; display: grid; gap: var(--u3); }
+  @media (min-width: 1100px) { .shots { grid-template-columns: 1fr 1fr; } }
+  .more { margin-top: var(--u4); }
+</style>

@@ -1,0 +1,179 @@
+---
+import { Image, getImage } from 'astro:assets';
+import Icon from './Icon.astro';
+import { image } from '../lib/images';
+
+interface Slide {
+  slug: string; title: string; genre: string; href: string; external: boolean;
+  image: string; footage?: { src: string; poster: string };
+}
+interface Props { slides: Slide[] }
+const { slides } = Astro.props;
+// posters are optimised once here so the <video> elements can point at them
+const posters = await Promise.all(slides.map((s) => (s.footage ? getImage({ src: image(s.footage.poster), width: 1280, format: 'webp' }) : null)));
+---
+<div class="banner" data-banner>
+  <div class="reel crt" aria-hidden="true">
+    {slides.map((s, i) => (
+      <div class="slide" data-slide data-active={i === 0 ? '' : undefined}>
+        {s.footage ? (
+          <video muted loop playsinline preload="none" poster={posters[i]!.src} data-src={s.footage.src}></video>
+        ) : (
+          <Image class="kb" src={image(s.image)} alt="" widths={[800, 1600]} sizes="100vw" loading={i === 0 ? 'eager' : 'lazy'} />
+        )}
+      </div>
+    ))}
+  </div>
+  <div class="shade" aria-hidden="true"></div>
+  <div class="wrap content">
+    <slot />
+    <div class="now">
+      <p class="label">Now showing</p>
+      <ul class="captions">
+        {slides.map((s, i) => (
+          <li data-caption hidden={i !== 0}>
+            <a class="link-icon" href={s.href}>{s.title} <Icon name={s.external ? 'external' : 'arrow'} /></a>
+            <span class="small soft">{s.genre}</span>
+          </li>
+        ))}
+      </ul>
+      <div class="controls" data-controls hidden>
+        <button type="button" data-prev aria-label="Previous game"><Icon name="back" /></button>
+        <button type="button" data-pause aria-label="Pause the reel"><Icon name="pause" /></button>
+        <button type="button" data-next aria-label="Next game"><Icon name="arrow" /></button>
+        <span class="dots">
+          {slides.map((s, i) => <button type="button" data-dot={i} aria-label={`Show ${s.title}`} aria-current={i === 0 ? 'true' : undefined}></button>)}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .banner { position: relative; min-height: min(86vh, 860px); display: grid; align-items: end; overflow: hidden; background: var(--bg); }
+  .reel { position: absolute; inset: 0; }
+  .slide { position: absolute; inset: 0; visibility: hidden; }
+  .slide[data-active] { visibility: visible; }
+  .slide video, .slide :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .slide[data-active] :global(.kb) { animation: kb 9s ease-out both; }
+  @keyframes kb { from { transform: scale(1.02) translate(0, 0); } to { transform: scale(1.12) translate(-2%, -1%); } }
+  .shade {
+    position: absolute; inset: 0; z-index: 3; pointer-events: none;
+    background:
+      linear-gradient(to top, var(--bg) 0%, rgb(20 17 19 / 0.82) 32%, rgb(20 17 19 / 0.25) 70%, rgb(20 17 19 / 0.55) 100%),
+      linear-gradient(to right, rgb(20 17 19 / 0.94) 0%, rgb(20 17 19 / 0.7) 38%, rgb(20 17 19 / 0) 72%);
+  }
+  .content { position: relative; z-index: 4; width: 100%; padding-top: var(--u12); padding-bottom: var(--u4); }
+  .now { display: flex; flex-wrap: wrap; align-items: center; gap: var(--u1) var(--u3); margin-top: var(--u4); padding-top: var(--u2); border-top: 1px solid var(--line); }
+  .now .label { margin: 0; }
+  .captions { list-style: none; margin: 0; padding: 0; }
+  .captions li { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--u1); }
+  .captions a { font: 900 1.75rem/1 var(--font-display); color: var(--text); text-decoration: none; }
+  .captions a:hover { color: var(--amber); }
+  .captions a :global(.icon) { width: 14px; }
+  .controls { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+  .controls button {
+    display: grid; place-items: center; width: var(--u4); height: var(--u4);
+    background: var(--panel); border: 1px solid var(--line); color: var(--text);
+  }
+  .controls button:hover { color: var(--bg); background: var(--amber); }
+  .controls :global(.icon) { width: 18px; }
+  .dots { display: flex; gap: 2px; margin-left: var(--u1); }
+  .dots button { width: 22px; height: var(--u4); border: 0; background: none; padding: 0; position: relative; }
+  .dots button::before { content: ""; position: absolute; left: 6px; top: 17px; width: 10px; height: 10px; background: var(--line); }
+  .dots button[aria-current]::before { background: var(--accent); }
+  .dots button:hover { background: none; }
+  .dots button:hover::before { background: var(--amber); }
+  @media (prefers-reduced-motion: reduce) {
+    .slide[data-active] :global(.kb) { animation: none; }
+  }
+</style>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  for (const banner of document.querySelectorAll<HTMLElement>('[data-banner]')) {
+    const slides = [...banner.querySelectorAll<HTMLElement>('[data-slide]')];
+    const captions = [...banner.querySelectorAll<HTMLElement>('[data-caption]')];
+    const dots = [...banner.querySelectorAll<HTMLButtonElement>('[data-dot]')];
+    const pauseBtn = banner.querySelector<HTMLButtonElement>('[data-pause]')!;
+    const reel = banner.querySelector<HTMLElement>('.reel')!;
+    let current = 0;
+    let playing = !reduce;
+    let hovered = false;
+    let timer = 0;
+
+    const media = (i: number) => slides[i].querySelector<HTMLVideoElement | HTMLImageElement>('video, img');
+    const startVideo = (i: number) => {
+      const v = slides[i].querySelector('video');
+      if (!v) return;
+      if (!v.src && v.dataset.src) v.src = v.dataset.src;
+      if (!reduce) v.play().catch(() => {});
+    };
+    // dissolve the outgoing frame away in random pixel blocks, revealing the new slide underneath
+    const dissolveFrom = (el: HTMLVideoElement | HTMLImageElement | null) => {
+      if (reduce || !el) return;
+      const w = 64, h = 36;
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      Object.assign(canvas.style, { position: 'absolute', inset: '0', width: '100%', height: '100%', zIndex: '1', imageRendering: 'pixelated' });
+      const ctx = canvas.getContext('2d')!;
+      try { ctx.drawImage(el, 0, 0, w, h); } catch { return; }
+      reel.append(canvas);
+      const order = Array.from({ length: w * h }, (_, i) => i).sort(() => Math.random() - 0.5);
+      const t0 = performance.now();
+      let n = 0;
+      const step = (now: number) => {
+        const target = Math.min(order.length, Math.round(((now - t0) / 700) * order.length));
+        for (; n < target; n++) ctx.clearRect(order[n] % w, Math.floor(order[n] / w), 1, 1);
+        if (n < order.length) requestAnimationFrame(step); else canvas.remove();
+      };
+      requestAnimationFrame(step);
+    };
+    const show = (i: number) => {
+      i = (i + slides.length) % slides.length;
+      if (i === current) return;
+      dissolveFrom(media(current));
+      slides[current].querySelector('video')?.pause();
+      slides[current].removeAttribute('data-active');
+      captions[current].hidden = true;
+      dots[current].removeAttribute('aria-current');
+      current = i;
+      slides[i].setAttribute('data-active', '');
+      captions[i].hidden = false;
+      dots[i].setAttribute('aria-current', 'true');
+      startVideo(i);
+    };
+    const schedule = () => {
+      clearInterval(timer);
+      if (playing && !hovered) timer = window.setInterval(() => show(current + 1), 7000);
+    };
+    const setPlaying = (p: boolean) => {
+      playing = p;
+      pauseBtn.setAttribute('aria-label', p ? 'Pause the reel' : 'Play the reel');
+      pauseBtn.innerHTML = p
+        ? '<svg class="icon" viewBox="0 0 11 11" width="22" height="22" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M2 1h2v9H2zM7 1h2v9H7z"/></svg>'
+        : '<svg class="icon" viewBox="0 0 11 11" width="22" height="22" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M2 1h2v9H2zM4 2h1v7H4zM5 3h1v5H5zM6 4h1v3H6zM7 5h1v1H7z"/></svg>';
+      schedule();
+    };
+
+    // start on a random game so every game leads sometimes
+    const first = Math.floor(Math.random() * slides.length);
+    if (first !== 0) {
+      slides[0].removeAttribute('data-active'); captions[0].hidden = true; dots[0].removeAttribute('aria-current');
+      current = first;
+      slides[first].setAttribute('data-active', ''); captions[first].hidden = false; dots[first].setAttribute('aria-current', 'true');
+    }
+    startVideo(current);
+    banner.querySelector<HTMLElement>('[data-controls]')!.hidden = false;
+    banner.querySelector('[data-prev]')!.addEventListener('click', () => { show(current - 1); schedule(); });
+    banner.querySelector('[data-next]')!.addEventListener('click', () => { show(current + 1); schedule(); });
+    dots.forEach((d, i) => d.addEventListener('click', () => { show(i); schedule(); }));
+    pauseBtn.addEventListener('click', () => setPlaying(!playing));
+    banner.addEventListener('pointerenter', () => { hovered = true; schedule(); });
+    banner.addEventListener('pointerleave', () => { hovered = false; schedule(); });
+    banner.addEventListener('focusin', () => { hovered = true; schedule(); });
+    banner.addEventListener('focusout', () => { hovered = false; schedule(); });
+    setPlaying(playing);
+  }
+</script>
