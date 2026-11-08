@@ -4,10 +4,10 @@ import Icon from '../components/Icon.astro';
 import BrandIcon from '../components/BrandIcon.astro';
 import club from '../lib/club';
 
-const tracks = [
-  { name: 'Glitch Blue', what: 'The technical side: programming our games.' },
-  { name: 'Glitch Red', what: 'Design: characters, game assets and UI.' },
-  { name: 'Glitch Neon', what: 'Esports: running our tournaments and leagues.' },
+// The club's two domains, as its selection mails describe them
+const domains = [
+  { name: 'GameDev', what: 'Making games from scratch: programming the gameplay, and designing characters, 3D models, animation, 2D assets and UI.' },
+  { name: 'E-Sports', what: 'Planning and running our tournaments, promotion and event banners, and playtesting and bug-hunting the games GameDev makes.' },
 ];
 const contacts = [
   { label: 'Discord', href: club.discord, text: 'Glitch Basement', icon: 'discord' },
@@ -18,7 +18,7 @@ const contacts = [
   { label: 'GitHub', href: club.github, text: 'glitchiith', icon: 'github' },
 ] as const;
 ---
-<Base title="Join" current="join" description="How to join Glitch, IIT Hyderabad's video game club: the Discord, recruitment tracks and who to contact.">
+<Base title="Join" current="join" description="How to join Glitch, IIT Hyderabad's video game club: the Discord, our two domains and who to contact.">
   <div class="wrap page">
   <h1><span class="glitch" data-text="Join Glitch" data-glitch-load>Join Glitch</span></h1>
   <p class="lead">
@@ -27,15 +27,15 @@ const contacts = [
   <p><a class="btn" href={club.discord}>Join the Discord <Icon name="external" /></a></p>
 
   <section>
-    <h2>How joining works</h2>
+    <h2>How Joining Works</h2>
     <p>Most of our events, jams and workshops are open to everyone at IITH; you don't need to be a member to take part.</p>
     <p>
-      To join the team, watch for a recruitment round; we announce them by mail and on Discord. There are three tracks:
+      To join the team, watch for a recruitment round; we announce them by mail and on Discord. The club has two domains:
     </p>
-    <dl class="tracks">
-      {tracks.map((t) => (<><dt>{t.name}</dt><dd>{t.what}</dd></>))}
+    <dl class="domains">
+      {domains.map((d) => (<><dt>{d.name}</dt><dd>{d.what}</dd></>))}
     </dl>
-    <p>Recent rounds asked you to make something on a theme we set: a playable game, or a set of game assets.</p>
+    <p>Rounds so far have asked for a playable game or a set of game assets for GameDev, and a tournament plan for E-Sports. Past rounds are listed under <a href="/events/">Events</a>.</p>
   </section>
 
   <section>
@@ -59,7 +59,7 @@ const contacts = [
 <style>
   section { margin-top: var(--u8); }
   .leads li { padding: var(--u2); background: var(--panel); }
-  .tracks, .contacts {
+  .domains, .contacts {
     display: grid;
     grid-template-columns: max-content minmax(0, 1fr);
     gap: var(--u1) var(--u4);
@@ -68,10 +68,10 @@ const contacts = [
   dt { font-weight: 700; display: inline-flex; align-items: center; gap: var(--u1); }
   dt :global(.brand) { width: 22px; height: 22px; color: var(--amber); }
   dd { margin: 0; overflow-wrap: anywhere; }
-  .tracks dt { font: 900 1.6rem/1.1 var(--font-display); color: var(--amber); }
+  .domains dt { font: 700 1.375rem/1.2 var(--font-display); color: var(--amber); }
   @media (max-width: 559px) {
-    .tracks { grid-template-columns: 1fr; gap: 0; }
-    .tracks dd { margin-bottom: var(--u2); }
+    .domains { grid-template-columns: 1fr; gap: 0; }
+    .domains dd { margin-bottom: var(--u2); }
   }
   .leads {
     list-style: none;

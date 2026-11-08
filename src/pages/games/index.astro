@@ -5,7 +5,7 @@ import Icon from '../../components/Icon.astro';
 import { games } from '../../lib/games';
 import { events, when } from '../../lib/events';
 
-const jams = events.filter((e) => e.type === 'Game jam');
+const jams = events.filter((e) => e.type === 'Game Jam');
 ---
 <Base title="Games" current="games" description="Games made by Glitch, the video game club of IIT Hyderabad, and the game jams we run.">
   <section class="wrap intro">
@@ -31,9 +31,9 @@ const jams = events.filter((e) => e.type === 'Game jam');
               <h3>{j.title}</h3>
               <p class="soft">{j.summary}</p>
               {page ? (
-                <a class="link-icon" href={page.url}>Jam page on itch.io <Icon name="external" /></a>
+                <a class="link-icon" href={page.url}>Jam Page on itch.io <Icon name="external" /></a>
               ) : (
-                <a class="link-icon" href={`/events/#${j.slug}`}>Event details <Icon name="arrow" /></a>
+                <a class="link-icon" href={`/events/#${j.slug}`}>Event Details <Icon name="arrow" /></a>
               )}
             </div>
           </li>

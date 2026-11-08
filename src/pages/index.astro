@@ -14,26 +14,28 @@ const recent = events.filter((e) => e.start <= today).slice(0, 4);
 const slides = games.map((g) => ({
   slug: g.slug, title: g.title, genre: g.genre, href: g.page || g.link || '/games/', external: !g.page && !!g.link, image: g.image, footage: g.footage,
 }));
-const tracks = [
-  { name: 'Glitch Blue', what: 'Code: programming our games.' },
-  { name: 'Glitch Red', what: 'Design: characters, assets and UI.' },
-  { name: 'Glitch Neon', what: 'Esports: running tournaments and leagues.' },
+// The club's two domains, as its selection mails describe them
+const domains = [
+  { name: 'GameDev', what: 'Making games from scratch: programming, game design, 3D models, animation, 2D art and UI.' },
+  { name: 'E-Sports', what: 'Planning and running our tournaments, promoting them, and playtesting the games GameDev makes.' },
 ];
 ---
-<Base description="Glitch is the video game club of IIT Hyderabad. We make games, run game jams and host esports tournaments.">
+<Base description="Glitch is the video game club of IIT Hyderabad. We make games, run game jams and host E-Sports tournaments.">
   <FeatureBanner slides={slides}>
-    <p class="label">The video game club of IIT Hyderabad</p>
-    <h1><span class="glitch" data-text="Glitch, the video game club of IITH" data-glitch-load>Glitch, the video game club of IITH</span></h1>
-    <p class="lead">We make games, run game jams and host esports tournaments.</p>
+    <h1 class="wordmark">
+      <span class="glitch" data-text="Glitch" data-glitch-load>Glitch</span><span class="visually-hidden">, </span>
+      <span class="tagline">The Video Game Club of IITH</span>
+    </h1>
+    <p class="lead">We make games, run game jams and host E-Sports tournaments.</p>
     <p class="actions">
       <a class="btn" href={club.discord}>Join the Discord <Icon name="external" /></a>
-      <a class="btn btn-quiet" href="/games/">See our games <Icon name="arrow" /></a>
+      <a class="btn btn-quiet" href="/games/">See Our Games <Icon name="arrow" /></a>
     </p>
     <p class="next small">
       {next ? (
-        <><span class="label">{next.start <= today ? 'On now' : 'Next event'}</span>{' '}<a href={`/events/#${next.slug}`}>{next.title}</a>, <span class="num">{when(next)}</span></>
+        <><span class="label">{next.start <= today ? 'On Now' : 'Next Event'}</span>{' '}<a href={`/events/#${next.slug}`}>{next.title}</a>, <span class="num">{when(next)}</span></>
       ) : (
-        <><span class="label">Next event</span>{' '}to be announced on <a href={club.discord}>our Discord</a>.{latest && <> Last one: <a href={`/events/#${latest.slug}`}>{latest.title}</a>, {when(latest, true)}.</>}</>
+        <><span class="label">Next Event</span>{' '}to be announced on <a href={club.discord}>our Discord</a>.{latest && <> Last one: <a href={`/events/#${latest.slug}`}>{latest.title}</a>, {when(latest, true)}.</>}</>
       )}
     </p>
   </FeatureBanner>
@@ -46,7 +48,7 @@ const tracks = [
     <div class="wall">
       {games.map((g) => <GameTile game={g as any} />)}
     </div>
-    <p data-reveal><a class="link-icon" href="/games/">All games and jams <Icon name="arrow" /></a></p>
+    <p data-reveal><a class="link-icon" href="/games/">All Games and Jams <Icon name="arrow" /></a></p>
   </section>
 
   <section class="wrap block" aria-labelledby="events">
@@ -63,37 +65,37 @@ const tracks = [
         </li>
       ))}
     </ul>
-    <p data-reveal><a class="link-icon" href="/events/">All events <Icon name="arrow" /></a></p>
+    <p data-reveal><a class="link-icon" href="/events/">All Events <Icon name="arrow" /></a></p>
   </section>
 
   <section class="wrap block records" aria-labelledby="records">
     <div class="head" data-reveal>
-      <h2 id="records">Hall of records</h2>
+      <h2 id="records">Hall of Records</h2>
       <p class="soft">Final standings from our competitive games, starting with Cogito at Milan 2026.</p>
     </div>
     <div data-reveal>
       <Scoreboard
-        caption="Cogito, top 5 hostels"
+        caption="Cogito, Top 5 Hostels"
         columns={[
           { key: 'hostel', label: 'Hostel' },
-          { key: 'players', label: 'Players counted', num: true, sub: 'players counted' },
-          { key: 'score', label: 'Total score', num: true },
+          { key: 'players', label: 'Players Counted', num: true, sub: 'players counted' },
+          { key: 'score', label: 'Total Score', num: true },
         ]}
         rows={cogito.hostels.slice(0, 5)}
       />
     </div>
-    <p data-reveal><a class="link-icon" href="/scoreboard/">Full standings <Icon name="arrow" /></a></p>
+    <p data-reveal><a class="link-icon" href="/scoreboard/">Full Standings <Icon name="arrow" /></a></p>
   </section>
 
   <section class="join" aria-labelledby="join">
     <div class="wrap join-inner" data-reveal>
       <div>
-        <h2 id="join">Join the club</h2>
+        <h2 id="join">Join the Club</h2>
         <p class="lead">The easiest way in is our Discord server, the Glitch Basement. Recruitment rounds are announced by mail and on Discord.</p>
-        <p class="actions"><a class="btn" href={club.discord}>Join the Discord <Icon name="external" /></a> <a class="btn btn-quiet" href="/join/">How joining works <Icon name="arrow" /></a></p>
+        <p class="actions"><a class="btn" href={club.discord}>Join the Discord <Icon name="external" /></a> <a class="btn btn-quiet" href="/join/">How Joining Works <Icon name="arrow" /></a></p>
       </div>
-      <dl class="tracks">
-        {tracks.map((t) => (<><dt>{t.name}</dt><dd class="soft">{t.what}</dd></>))}
+      <dl class="domains">
+        {domains.map((d) => (<><dt>{d.name}</dt><dd class="soft">{d.what}</dd></>))}
       </dl>
     </div>
   </section>
@@ -114,13 +116,17 @@ const tracks = [
   }
   @media (min-width: 768px) { .recent li { grid-template-columns: 15rem 1fr auto; } }
   .recent .num { color: var(--amber); }
-  .recent a { color: var(--text); font: 900 1.6rem/1.05 var(--font-display); text-decoration: none; }
+  .recent a { color: var(--text); font: 700 1.375rem/1.2 var(--font-display); text-decoration: none; }
   .recent a:hover { color: var(--amber); text-decoration: underline 3px var(--accent); text-underline-offset: 6px; }
   .records :global(.board) { max-width: 52rem; }
   .join { margin-top: var(--u12); padding-block: var(--u8); background: var(--panel); border-block: 1px solid var(--line); }
   .join-inner { display: grid; gap: var(--u4); align-items: center; }
   @media (min-width: 900px) { .join-inner { grid-template-columns: 1.4fr 1fr; } }
-  .tracks { display: grid; gap: var(--u2); margin: 0; }
-  .tracks dt { font: 900 1.75rem/1 var(--font-display); color: var(--amber); }
-  .tracks dd { margin: 4px 0 0; }
+  .domains { margin: 0; }
+  .domains dt { font: 700 1.5rem/1.1 var(--font-display); color: var(--amber); }
+  .domains dd { margin: 6px 0 var(--u3); }
+  .domains dd:last-child { margin-bottom: 0; }
+  /* Laid out like the logo: the name, then its tagline */
+  .wordmark { display: grid; gap: var(--u1); }
+  .wordmark .tagline { font: 600 clamp(0.9375rem, 2.2vw, 1.5rem)/1.3 var(--font-display); letter-spacing: 0.1em; }
 </style>

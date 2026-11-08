@@ -1,7 +1,7 @@
 [
   {
     "slug": "intro-to-game-engines-2024",
-    "title": "Intro to game engines",
+    "title": "Intro to Game Engines",
     "kind": "game-dev",
     "type": "Workshop",
     "start": "2024-09-19",
@@ -11,15 +11,15 @@
   },
   {
     "slug": "milan-2024-game-jam",
-    "title": "Milan 2024 game jam",
+    "title": "Milan 2024 Game Jam",
     "kind": "game-dev",
-    "type": "Game jam",
+    "type": "Game Jam",
     "start": "2024-09-27",
     "dateText": "Until 27 Sep",
     "venue": "Online",
     "with": "With Milan",
-    "summary": "A five-day jam on the theme “City of beast”, solo or in teams of up to four, on any engine and any platform.",
-    "links": [{ "label": "Jam page on itch.io", "url": "https://itch.io/jam/glitch-milan-24" }]
+    "summary": "A five-day jam on the theme “City of Beast”, solo or in teams of up to four, on any engine and any platform.",
+    "links": [{ "label": "Jam Page on itch.io", "url": "https://itch.io/jam/glitch-milan-24" }]
   },
   {
     "slug": "lock-and-load-2024",
@@ -47,15 +47,25 @@
     "venue": "ALH-1",
     "summary": "Four hands-on Unity sessions, from a first Pong game to a 3D FPS with parkour. Session tasks counted toward core team selection.",
     "details": [
-      "2 Apr: Build your first game! (Pong)",
-      "5 Apr: Make your own 3D FPS game",
-      "8 Apr: Power up your 3D FPS game",
-      "17 Apr: Make your game epic"
+      "2 Apr: Build Your First Game! (Pong)",
+      "5 Apr: Make Your Own 3D FPS Game",
+      "8 Apr: Power Up Your 3D FPS Game",
+      "17 Apr: Make Your Game Epic"
     ]
   },
   {
+    "slug": "summer-core-hiring-2025",
+    "title": "Glitch Summer Core Hiring Challenge 2025",
+    "kind": "community",
+    "type": "Selections",
+    "start": "2025-05-12",
+    "end": "2025-05-25",
+    "venue": "Online",
+    "summary": "Core team selections in both domains. GameDev: build a full game prototype inspired by handpicked indie games, or design and rig a 3D hand model. E-Sports: plan a tournament, plus at least one extra task, such as a banner, a blog or a bug hunt."
+  },
+  {
     "slug": "glitch-x-omen-2025",
-    "title": "Glitch × Omen offline tournament",
+    "title": "Glitch × Omen Offline Tournament",
     "kind": "esports",
     "type": "Tournament",
     "start": "2025-08-12",
@@ -66,13 +76,13 @@
   },
   {
     "slug": "glitch-orientation-2025",
-    "title": "Glitch orientation",
+    "title": "Glitch Orientation",
     "kind": "community",
     "type": "Orientation",
     "start": "2025-08-12",
     "dateText": "Aug 2025",
     "approx": true,
-    "venue": "Auditorium, A block",
+    "venue": "Auditorium, A Block",
     "summary": "An introduction to the club and what we do, from gaming tournaments to game jams."
   },
   {
@@ -90,21 +100,21 @@
   },
   {
     "slug": "milan-2025-game-jam",
-    "title": "Milan 2025 game jam",
+    "title": "Milan 2025 Game Jam",
     "kind": "game-dev",
-    "type": "Game jam",
+    "type": "Game Jam",
     "start": "2025-10-18",
     "end": "2025-10-24",
     "venue": "Online",
     "with": "With Milan",
     "summary": "A six-day jam: use at least two of five themes, in a game that runs on a Windows PC. Solo or teams of up to four.",
-    "details": ["Themes: Inversion, Kinetic energy, No life is the same, Know your limits, Who is the hero"]
+    "details": ["Themes: Inversion, Kinetic Energy, No Life Is the Same, Know Your Limits, Who Is the Hero"]
   },
   {
     "slug": "milan-2025-website-game",
-    "title": "Milan 2025 website game",
+    "title": "Milan 2025 Website Game",
     "kind": "game-dev",
-    "type": "Website game",
+    "type": "Website Game",
     "start": "2025-10-19",
     "end": "2025-10-24",
     "venue": "Online, desktop only",
@@ -113,7 +123,7 @@
   },
   {
     "slug": "milan-2025-esports",
-    "title": "Glitch × Milan esports",
+    "title": "Glitch × Milan E-Sports",
     "kind": "esports",
     "type": "Tournament",
     "start": "2025-10-22",
@@ -135,7 +145,7 @@
   },
   {
     "slug": "intro-to-game-dev-2026",
-    "title": "Intro to game dev",
+    "title": "Intro to Game Dev",
     "kind": "game-dev",
     "type": "Workshop",
     "start": "2026-02-12",
@@ -153,14 +163,14 @@
     "time": "9 PM",
     "summary": "Six hands-on sessions building a 3D FPS game in Unity, with Blender modelling along the way.",
     "details": [
-      "17 Mar, C-LH2: Build your own 3D FPS game",
-      "27 Mar, CHE-119: Build your own gun system",
-      "1 Apr, MAE-LH2: Make your own 3D models",
-      "9 Apr, MAE-LH3: Bring your 3D models to life",
-      "11 Apr, MAE-LH3: Level up your movement and audio",
-      "14 Apr, MAE-LH3: Finishing your game"
+      "17 Mar, C-LH2: Build Your Own 3D FPS Game",
+      "27 Mar, CHE-119: Build Your Own Gun System",
+      "1 Apr, MAE-LH2: Make Your Own 3D Models",
+      "9 Apr, MAE-LH3: Bring Your 3D Models to Life",
+      "11 Apr, MAE-LH3: Level Up Your Movement and Audio",
+      "14 Apr, MAE-LH3: Finishing Your Game"
     ],
-    "links": [{ "label": "Session 1 recap on YouTube", "url": "https://www.youtube.com/watch?v=EN5gpx45wm0" }]
+    "links": [{ "label": "Session 1 Recap on YouTube", "url": "https://www.youtube.com/watch?v=EN5gpx45wm0" }]
   },
   {
     "slug": "mobile-gaming-league-2026-03",
@@ -174,19 +184,39 @@
     "details": ["Clash Royale: 23–25 Mar", "BGMI and Free Fire: 27–29 Mar"]
   },
   {
-    "slug": "freshers-game-jam-2026",
-    "title": "2026 Freshers' game jam",
+    "slug": "spring-selections-2026",
+    "title": "Glitch Spring Selections 2026",
     "kind": "game-dev",
-    "type": "Game jam",
+    "type": "Selections",
+    "start": "2026-04-27",
+    "end": "2026-05-04",
+    "venue": "Online",
+    "summary": "Selections for the GameDev team, open to everyone, with tasks built on what the Spring Camp covered: make a complete single-player FPS, or create 3D or 2D game assets."
+  },
+  {
+    "slug": "summer-recruitment-2026",
+    "title": "Glitch Summer Recruitment 2026",
+    "kind": "community",
+    "type": "Selections",
+    "start": "2026-05-13",
+    "end": "2026-05-26",
+    "venue": "Online",
+    "summary": "A second round of core team selections, in both domains. GameDev: build a small game prototype, or create and animate a 3D model or design a set of 2D assets. E-Sports: plan tournaments, design event banners, and playtest or debug our games."
+  },
+  {
+    "slug": "freshers-game-jam-2026",
+    "title": "2026 Freshers' Game Jam",
+    "kind": "game-dev",
+    "type": "Game Jam",
     "start": "2026-08-04",
     "end": "2026-08-11",
     "venue": "Online",
-    "summary": "A jam on the theme “Unintended side effects”, in teams of one to three. Anyone could enter, but only freshers could win, and AI-generated art, music or graphics meant disqualification.",
-    "links": [{ "label": "Jam page on itch.io", "url": "https://itch.io/jam/2026-iith-freshers-jam" }]
+    "summary": "A jam on the theme “Unintended Side Effects”, in teams of one to three. Anyone could enter, but only freshers could win, and AI-generated art, music or graphics meant disqualification.",
+    "links": [{ "label": "Jam Page on itch.io", "url": "https://itch.io/jam/2026-iith-freshers-jam" }]
   },
   {
     "slug": "college-rivals-season-4-2026",
-    "title": "College Rivals Season 4 on campus",
+    "title": "College Rivals Season 4 on Campus",
     "kind": "esports",
     "type": "Tournament",
     "start": "2026-09-08",
@@ -197,7 +227,7 @@
   },
   {
     "slug": "iith-pokemon-vgc-tournament-2026",
-    "title": "The first IITH Pokémon VGC tournament",
+    "title": "The First IITH Pokémon VGC Tournament",
     "kind": "esports",
     "type": "Tournament",
     "start": "2026-09-19",
@@ -221,25 +251,25 @@
       "Forza Horizon 6: ₹12,500 and ₹7,500 Amazon gift cards for first and second",
       "EA FC 26, Tekken 8 and Street Fighter 6: ₹7,000 and ₹3,000 Amazon gift cards for first and second"
     ],
-    "links": [{ "label": "Event page on theesports.club", "url": "https://theesports.club/events/dell-campus-quest-iit-hyderabadQrF1BU" }]
+    "links": [{ "label": "Event Page on theesports.club", "url": "https://theesports.club/events/dell-campus-quest-iit-hyderabadQrF1BU" }]
   },
   {
     "slug": "milan-2026-game-jam",
-    "title": "Milan 2026 game jam",
+    "title": "Milan 2026 Game Jam",
     "kind": "game-dev",
-    "type": "Game jam",
+    "type": "Game Jam",
     "start": "2026-09-26",
     "end": "2026-10-02",
     "venue": "Online",
     "with": "With Milan",
-    "summary": "A jam on the theme “Time is money”, solo or in squads of up to four, with entries counting toward each hostel's Milan score.",
-    "links": [{ "label": "Jam page on itch.io", "url": "https://itch.io/jam/glitch-milan-game-jam-26" }]
+    "summary": "A jam on the theme “Time Is Money”, solo or in squads of up to four, with entries counting toward each hostel's Milan score.",
+    "links": [{ "label": "Jam Page on itch.io", "url": "https://itch.io/jam/glitch-milan-game-jam-26" }]
   },
   {
     "slug": "cogito-milan-2026",
     "title": "Cogito",
     "kind": "game-dev",
-    "type": "Website game",
+    "type": "Website Game",
     "start": "2026-09-29",
     "end": "2026-10-04",
     "venue": "Online at glitch.iith.dev",
@@ -247,12 +277,12 @@
     "summary": "Our roguelike website game for Milan. Each hostel's top 50 scores counted toward its total.",
     "links": [
       { "label": "About Cogito", "url": "/games/cogito/" },
-      { "label": "Final standings", "url": "/scoreboard/#cogito" }
+      { "label": "Final Standings", "url": "/scoreboard/#cogito" }
     ]
   },
   {
     "slug": "milan-2026-esports",
-    "title": "Glitch × Milan esports",
+    "title": "Glitch × Milan E-Sports",
     "kind": "esports",
     "type": "Tournament",
     "start": "2026-10-01",
@@ -273,7 +303,7 @@
   },
   {
     "slug": "vgc-team-building-session-2026",
-    "title": "VGC team building session",
+    "title": "VGC Team Building Session",
     "kind": "esports",
     "type": "Workshop",
     "start": "2026-10-13",
@@ -283,8 +313,22 @@
     "summary": "Build a Regulation M-C team from scratch, then test teams in practice battles, with a bonus session on random battles."
   },
   {
+    "slug": "member-selections-2026",
+    "title": "Glitch Member Selections 2026",
+    "kind": "game-dev",
+    "type": "Game Jam",
+    "start": "2026-10-18",
+    "end": "2026-10-24",
+    "venue": "Online",
+    "summary": "Our member selections, run like a jam: build a complete, playable game from scratch, or a game-ready set of characters, assets and UI, using at least three of the five themes. Members are picked from the best entries.",
+    "details": [
+      "Two tracks: Game Development and Asset Design",
+      "AI-generated assets in the final entry meant disqualification"
+    ]
+  },
+  {
     "slug": "pokemon-showdown-tournaments-2026",
-    "title": "Pokémon Showdown random battle tournaments",
+    "title": "Pokémon Showdown Random Battle Tournaments",
     "kind": "esports",
     "type": "Tournament",
     "start": "2026-10-19",
@@ -300,7 +344,7 @@
   },
   {
     "slug": "community-session-first-game-2026",
-    "title": "Community session: make your first game",
+    "title": "Community Session: Make Your First Game",
     "kind": "game-dev",
     "type": "Workshop",
     "start": "2026-10-28",
@@ -320,7 +364,7 @@
   },
   {
     "slug": "red-bull-wings-cup-qualifier-2026",
-    "title": "Red Bull Wings Cup university qualifier",
+    "title": "Red Bull Wings Cup University Qualifier",
     "kind": "esports",
     "type": "Tournament",
     "start": "2026-10-31",
@@ -328,6 +372,6 @@
     "venue": "Recreational Rooms near Aryabhatta Hostel",
     "with": "With Elan & nVision (Nexus 4.0) and Red Bull",
     "summary": "An FC 27 leaderboard qualifier: everyone plays once, with a second attempt available.",
-    "links": [{ "label": "Red Bull Wings Cup page", "url": "https://redbull.com/in-en/events/red-bull-wings-cup-india-2026/red-bull-wings-cup-india-university-league" }]
+    "links": [{ "label": "Red Bull Wings Cup Page", "url": "https://redbull.com/in-en/events/red-bull-wings-cup-india-2026/red-bull-wings-cup-india-university-league" }]
   }
 ]

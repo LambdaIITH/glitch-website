@@ -29,7 +29,7 @@ export interface ClubEvent {
   draft?: boolean;
 }
 
-export const kindLabel: Record<Kind, string> = { 'game-dev': 'Game dev', esports: 'Esports', community: 'Community' };
+export const kindLabel: Record<Kind, string> = { 'game-dev': 'GameDev', esports: 'E-Sports', community: 'Community' };
 
 /** Every published event, newest first. */
 export const events = (data as ClubEvent[]).filter((e) => !e.draft).toSorted((a, b) => b.start.localeCompare(a.start));

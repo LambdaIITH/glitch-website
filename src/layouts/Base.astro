@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import display from '../fonts/big-shoulders-900.woff2?url';
+import display from '../fonts/montserrat-latin.woff2?url';
 import body from '../fonts/atkinson-next-latin.woff2?url';
 import hero2025 from '../assets/sprites/hero-2025.png';
 import heroDrippi from '../assets/sprites/hero-drippi.png';
@@ -19,7 +19,7 @@ interface Props {
   skip?: { href: string; label: string };
 }
 const { title, description, current, noindex = false, skip } = Astro.props;
-const fullTitle = title ? `${title} · Glitch` : 'Glitch, the video game club of IITH';
+const fullTitle = title ? `${title} · Glitch` : 'Glitch, The Video Game Club of IITH';
 // every game's hero, cut from the club's own builds and itch.io art, shown at 4x
 const parade = [
   { src: hero2025, alt: '' }, { src: heroDrippi, alt: '' }, { src: heroCogito, alt: '' }, { src: heroPyro, alt: '' }, { src: heroRow, alt: '' },
@@ -40,7 +40,7 @@ const parade = [
   </head>
   <body>
     {skip && <a class="skip-link" href={skip.href}>{skip.label}</a>}
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">Skip to Content</a>
     <SiteHeader current={current} />
     <main id="main"><slot /></main>
     <SiteFooter />
@@ -52,7 +52,7 @@ const parade = [
           {parade.map((p) => <img src={p.src.src} alt={p.alt} width={p.src.width * 4} height={p.src.height * 4} />)}
         </div>
         <div class="bar" aria-hidden="true"><span></span></div>
-        <button type="button">Skip intro</button>
+        <button type="button">Skip Intro</button>
       </div>
     </template>
     <script>

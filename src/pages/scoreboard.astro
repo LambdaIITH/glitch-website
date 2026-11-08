@@ -5,7 +5,7 @@ import cogito from '../data/cogito.json';
 ---
 <Base title="Hall of records" current="scoreboard" description="Final standings from Glitch's competitive games, starting with Cogito at Milan 2026.">
   <div class="wrap page">
-  <h1><span class="glitch" data-text="Hall of records" data-glitch-load>Hall of records</span></h1>
+  <h1><span class="glitch" data-text="Hall of Records" data-glitch-load>Hall of Records</span></h1>
   <p class="lead">Final standings from our competitive games. Every board here is frozen.</p>
 
   <section id="cogito" class="record">
@@ -16,20 +16,20 @@ import cogito from '../data/cogito.json';
     </p>
     <div class="boards">
       <Scoreboard
-        caption="Hostel standings"
+        caption="Hostel Standings"
         columns={[
           { key: 'hostel', label: 'Hostel' },
-          { key: 'players', label: 'Players counted', num: true, sub: 'players counted' },
-          { key: 'score', label: 'Total score', num: true },
+          { key: 'players', label: 'Players Counted', num: true, sub: 'players counted' },
+          { key: 'score', label: 'Total Score', num: true },
         ]}
         rows={cogito.hostels}
       />
       <Scoreboard
-        caption="Top 20 players"
+        caption="Top 20 Players"
         columns={[
           { key: 'name', label: 'Name' },
           { key: 'hostel', label: 'Hostel', sub: '' },
-          { key: 'score', label: 'Best score', num: true },
+          { key: 'score', label: 'Best Score', num: true },
         ]}
         rows={cogito.players}
       />

@@ -24,7 +24,7 @@ function blip(freq = 880, ms = 45, type: OscillatorType = 'square', gain = 0.035
 for (const btn of document.querySelectorAll<HTMLButtonElement>('[data-sound-toggle]')) {
   const sync = () => {
     btn.setAttribute('aria-pressed', String(soundOn));
-    btn.querySelector('[data-sound-label]')!.textContent = soundOn ? 'Sound on' : 'Sound off';
+    btn.querySelector('[data-sound-label]')!.textContent = soundOn ? 'Sound On' : 'Sound Off';
   };
   sync();
   btn.hidden = false;

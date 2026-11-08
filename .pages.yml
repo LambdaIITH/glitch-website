@@ -47,9 +47,9 @@ content:
         options:
           values:
             - name: game-dev
-              label: Game dev
+              label: GameDev
             - name: esports
-              label: Esports
+              label: E-Sports
             - name: community
               label: Community
       - name: type
@@ -57,7 +57,7 @@ content:
         type: select
         required: true
         options:
-          values: [Game jam, Workshop, Tournament, Website game, Orientation, Talk, Other]
+          values: [Game Jam, Workshop, Tournament, Selections, Website Game, Orientation, Talk, Other]
       - name: start
         label: Start date
         type: date

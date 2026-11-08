@@ -21,13 +21,13 @@ const shots = [
 const fmt = new Intl.NumberFormat('en-IN');
 // As the club sent them, Nov 2026
 const credits = [
-  ['Chakradhari', 'Player, enemy and boss gameplay design'],
-  ['Nikil', 'Map design'],
-  ['Likith and Pushkar', 'Shop and powerups design'],
-  ['Devadath', 'Overall manager and UI design'],
-  ['Dwarak', 'Player and boss modelling, and player animations'],
-  ['Khushhal', 'Enemy modelling'],
-  ['Tanishq', 'Boss and enemy animations'],
+  ['Chakradhari', 'Player, Enemy and Boss Gameplay Design'],
+  ['Nikil', 'Map Design'],
+  ['Likith and Pushkar', 'Shop and Powerups Design'],
+  ['Devadath', 'Overall Manager and UI Design'],
+  ['Dwarak', 'Player and Boss Modelling, and Player Animations'],
+  ['Khushhal', 'Enemy Modelling'],
+  ['Tanishq', 'Boss and Enemy Animations'],
   ['Amogh', 'Composer'],
 ];
 ---
@@ -44,20 +44,20 @@ const credits = [
 
     <div class="about">
       <div data-reveal>
-        <h2>The run</h2>
+        <h2>The Run</h2>
         <p>Room layouts, enemies and upgrades are all randomly generated, so every run is different. As our launch mail put it: that's what we call a roguelike.</p>
         <p>Cogito ran on glitch.iith.dev during Milan, and every run brought in points for your hostel block. Each hostel's top 50 scores counted toward its total, and the top 20 players made the main board.</p>
         <h2>Play</h2>
         <p class="play">
-          <span class="btn btn-quiet" aria-disabled="true">Free play on itch.io</span>
+          <span class="btn btn-quiet" aria-disabled="true">Free Play on itch.io</span>
           <span class="placeholder">Placeholder</span>
         </p>
         <p>The competition build came down with the boards. A free-play build without scores will go up on <a class="link-icon" href="https://glitchiith.itch.io/">our itch.io page <Icon name="external" /></a> once the dev team uploads it.</p>
       </div>
       <dl class="facts" data-reveal>
-        <dt>Made by</dt><dd>Glitch, for Milan 2026</dd>
+        <dt>Made By</dt><dd>Glitch, for Milan 2026</dd>
         <dt>Genre</dt><dd>Roguelike</dd>
-        <dt>Built with</dt><dd>Unity, played in the browser</dd>
+        <dt>Built With</dt><dd>Unity, played in the browser</dd>
         <dt>Live</dt><dd>29 Sep – 4 Oct 2026</dd>
         <dt>Status</dt><dd>Archived. The final standings are frozen.</dd>
       </dl>
@@ -80,20 +80,20 @@ const credits = [
       {credits.map(([who, what]) => <div><dt>{what}</dt><dd>{who}</dd></div>)}
     </dl>
 
-    <h2 data-reveal>Final standings</h2>
+    <h2 data-reveal>Final Standings</h2>
     <p data-reveal>Top player: <strong>{top.name}</strong> of {top.hostel}, with a best score of <span class="num">{fmt.format(top.score)}</span>.</p>
     <div data-reveal>
       <Scoreboard
-        caption="Hostel standings, top 5 of 17"
+        caption="Hostel Standings, Top 5 of 17"
         columns={[
           { key: 'hostel', label: 'Hostel' },
-          { key: 'players', label: 'Players counted', num: true, sub: 'players counted' },
-          { key: 'score', label: 'Total score', num: true },
+          { key: 'players', label: 'Players Counted', num: true, sub: 'players counted' },
+          { key: 'score', label: 'Total Score', num: true },
         ]}
         rows={cogito.hostels.slice(0, 5)}
       />
     </div>
-    <p class="more"><a class="btn btn-quiet" href="/scoreboard/#cogito">Full standings <Icon name="arrow" /></a></p>
+    <p class="more"><a class="btn btn-quiet" href="/scoreboard/#cogito">Full Standings <Icon name="arrow" /></a></p>
   </div>
 </Base>
 
@@ -114,7 +114,7 @@ const credits = [
   .btn[aria-disabled='true'] { color: var(--soft); cursor: not-allowed; }
   .btn[aria-disabled='true']::before { background: transparent; border: 2px dashed var(--line); }
   .facts { margin: 0; padding: var(--u3); background: var(--panel); align-self: start; }
-  dt { font: 900 1.25rem/1.15 var(--font-display); letter-spacing: 0.03em; color: var(--soft); }
+  dt { font: 600 0.9375rem/1.3 var(--font-display); letter-spacing: 0.06em; color: var(--soft); }
   dd { margin: 2px 0 var(--u2); }
   dd:last-child { margin-bottom: 0; }
   h2 { margin-top: var(--u12); }

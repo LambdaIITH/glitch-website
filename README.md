@@ -106,7 +106,8 @@ Jam entries belong to their makers: ask them before showing their art.
 
 Self-hosted from `src/fonts/`, all under the SIL Open Font License:
 
-- [Big Shoulders Display](https://fonts.google.com/specimen/Big+Shoulders+Display) Black: big headlines in capitals, and small labels in sentence case.
+- [Montserrat](https://fonts.google.com/specimen/Montserrat) by Julieta Ulanovsky: the logo's typeface, for headlines and labels.
+  Headlines, titles, labels, buttons and navigation are in Title Case, like the logo; running text is in sentence case.
 - [Departure Mono](https://departuremono.com) by Helena Zhang: numbers, dates and scores. Drawn on an
   11px grid, so only use it at 11, 22, 33, 44 or 66px.
 - [Atkinson Hyperlegible Next](https://www.brailleinstitute.org/freefont/) by the Braille Institute: body text.

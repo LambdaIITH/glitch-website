@@ -6,8 +6,8 @@
   "linkedin": "https://www.linkedin.com/company/glitch-iith",
   "github": "https://github.com/glitchiith",
   "leads": [
-    { "name": "Vijay S. Badde", "role": "Overall coordinator" },
-    { "name": "Devadath Sabarish", "role": "Game dev head" },
-    { "name": "Dhwanith M. Doddahundi", "role": "Esports head" }
+    { "name": "Vijay S. Badde", "role": "Overall Coordinator" },
+    { "name": "Devadath Sabarish", "role": "Game Development Head" },
+    { "name": "Dhwanith M. Doddahundi", "role": "E-Sports Head" }
   ]
 }
