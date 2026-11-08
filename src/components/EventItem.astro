@@ -15,7 +15,7 @@ const { event: e } = Astro.props;
   <div>
     <h3>{e.title}</h3>
     <p class="meta small">
-      <span class="tag" data-kind={e.kind}>{kindLabel[e.kind]}</span>
+      <span class="tag" data-kind={e.kind}><Icon name={e.kind} />{kindLabel[e.kind]}</span>
       {e.with && <span>{e.with}</span>}
       {e.venue && <span>{e.venue}</span>}
       {e.time && <span>{e.time}</span>}

@@ -18,7 +18,7 @@ const colours = [
   { token: 'text', hex: '#f3ece4', use: 'Body text', ratio: '16.0' },
   { token: 'soft', hex: '#b7aca3', use: 'Secondary text', ratio: '8.4' },
   { token: 'accent', hex: '#ff5a1f', use: 'Main action buttons (dark text on it: 6.0)', ratio: '6.0' },
-  { token: 'amber', hex: '#ffb547', use: 'Links, focus rings, labels, scores', ratio: '10.7' },
+  { token: 'amber', hex: '#ffb547', use: 'Links, focus rings, scores', ratio: '10.7' },
   { token: 'red', hex: '#f03808', use: 'Logo red: glitch channel, esports tag', ratio: '–' },
   { token: 'orange', hex: '#d87840', use: 'Logo orange: game dev tag', ratio: '–' },
   { token: 'cool', hex: '#2fd3c7', use: 'Second glitch channel only, never text', ratio: '–' },
@@ -49,7 +49,7 @@ const icons = ['arrow', 'back', 'external', 'play', 'pause', 'stairs', 'door', '
       <h3>Smaller headings stay in sentence case</h3>
       <p class="small soft">Big Shoulders Display Black, 30px.</p>
       <p class="num spec-2">Score 1,42,188</p>
-      <p class="small soft">Departure Mono for numbers, dates and scores, only at multiples of 11px. <span class="label">Labels too, at 11px</span></p>
+      <p class="small soft">Departure Mono for numbers, dates and scores, only at multiples of 11px. <span class="label">Labels use Big Shoulders, small and in sentence case</span></p>
       <p>Atkinson Hyperlegible Next for everything you read. Buttons, links, labels and navigation are always sentence case.</p>
     </section>
 
@@ -62,9 +62,9 @@ const icons = ['arrow', 'back', 'external', 'play', 'pause', 'stairs', 'door', '
       <p>Links read like <a href="/events/">this</a>; links that leave the site carry an arrow: <a class="link-icon" href={club.itch}>our games on itch.io <Icon name="external" /></a></p>
       <p class="soft small">Buttons are one tile (44px) tall with pixel-stepped corners. One solid button per screen. Focus is a 3px amber ring on everything.</p>
       <p class="row">
-        <span class="tag" data-kind="game-dev">Game dev</span>
-        <span class="tag" data-kind="esports">Esports</span>
-        <span class="tag" data-kind="community">Community</span>
+        <span class="tag" data-kind="game-dev"><Icon name="game-dev" />Game dev</span>
+        <span class="tag" data-kind="esports"><Icon name="esports" />Esports</span>
+        <span class="tag" data-kind="community"><Icon name="community" />Community</span>
         <span class="placeholder">Placeholder</span>
       </p>
     </section>

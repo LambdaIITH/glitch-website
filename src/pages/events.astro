@@ -1,4 +1,5 @@
 ---
+import Icon from '../components/Icon.astro';
 import Base from '../layouts/Base.astro';
 import EventItem from '../components/EventItem.astro';
 import { events, kindLabel, type Kind } from '../lib/events';
@@ -21,7 +22,7 @@ const count = (k: Kind) => events.filter((e) => e.kind === k).length;
       {kinds.map((k) => (
         <label class="chip">
           <input type="radio" name="kind" value={k} />
-          <span class="tag" data-kind={k}>{kindLabel[k]}</span>
+          <span class="tag" data-kind={k}><Icon name={k} />{kindLabel[k]}</span>
           <span class="count">{count(k)}</span>
         </label>
       ))}
@@ -40,7 +41,7 @@ const count = (k: Kind) => events.filter((e) => e.kind === k).length;
 
 <style>
   .filters { margin: var(--u4) 0 0; padding: 0; border: 0; }
-  legend { margin-bottom: var(--u1); padding: 0; font: 400 11px/1.2 var(--font-pixel); color: var(--amber); }
+  legend { margin-bottom: var(--u1); padding: 0; font: 900 1.25rem/1.15 var(--font-display); letter-spacing: 0.03em; color: var(--soft); }
   .chips { display: flex; flex-wrap: wrap; gap: var(--u1); }
   .chip {
     position: relative;
@@ -62,7 +63,7 @@ const count = (k: Kind) => events.filter((e) => e.kind === k).length;
   .chip:hover { background: var(--panel); }
   .chip:has(input:focus-visible) { outline: 3px solid var(--amber); outline-offset: 3px; }
   .chip:has(input:checked) { background: var(--amber); border-color: var(--amber); color: var(--bg); }
-  .chip:has(input:checked) :global(.tag) { color: var(--bg); }
+  .chip:has(input:checked) :global(.tag), .chip:has(input:checked) :global(.tag .icon) { color: var(--bg); }
   .count { font-weight: 400; }
 
   .year { margin-top: var(--u8); }

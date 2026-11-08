@@ -59,7 +59,7 @@ const tracks = [
         <li data-reveal>
           <span class="num">{when(e)}</span>
           <a href={`/events/#${e.slug}`}>{e.title}</a>
-          <span class="tag" data-kind={e.kind}>{kindLabel[e.kind]}</span>
+          <span class="tag" data-kind={e.kind}><Icon name={e.kind} />{kindLabel[e.kind]}</span>
         </li>
       ))}
     </ul>
