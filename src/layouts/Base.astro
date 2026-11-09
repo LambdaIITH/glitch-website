@@ -56,6 +56,22 @@ const parade = [
           <feMerge><feMergeNode in="pink" /><feMergeNode in="cyan" /><feMergeNode in="white" /></feMerge>
         </filter>
       ))}
+      {/* The header's "Glitch", drawn like the logo: a tear low across the word (the bottom slice slides left), then the
+          split. Units are fractions of the word's box, so it scales with the text. */}
+      <filter id="logo-type" color-interpolation-filters="sRGB" primitiveUnits="objectBoundingBox" x="-5%" y="-10%" width="110%" height="120%">
+        <feFlood flood-color="#fff" y="0.59" height="0.6" result="low" />
+        <feComposite in="SourceAlpha" in2="low" operator="out" result="top" />
+        <feComposite in="SourceAlpha" in2="low" operator="in" />
+        <feOffset dx="-0.012" result="bottom" />
+        <feMerge result="torn"><feMergeNode in="top" /><feMergeNode in="bottom" /></feMerge>
+        <feOffset in="torn" dx="-0.0123" dy="0.009" result="a" />
+        <feOffset in="torn" dx="0.0123" dy="-0.009" result="b" />
+        <feFlood flood-color="#e85070" /><feComposite in2="a" operator="in" result="pink" />
+        <feFlood flood-color="#18f0f0" /><feComposite in2="b" operator="in" result="cyan" />
+        <feComposite in="a" in2="b" operator="in" result="both" />
+        <feFlood flood-color="#f8f8f8" /><feComposite in2="both" operator="in" result="white" />
+        <feMerge><feMergeNode in="pink" /><feMergeNode in="cyan" /><feMergeNode in="white" /></feMerge>
+      </filter>
     </svg>
     {skip && <a class="skip-link" href={skip.href}>{skip.label}</a>}
     <a class="skip-link" href="#main">Skip to Content</a>

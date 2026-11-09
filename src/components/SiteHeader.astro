@@ -41,6 +41,8 @@ const nav = [
     font: 600 1.625rem/1 var(--font-heading);
   }
   .brand :global(img) { width: 36px; height: auto; }
+  .brand .glitch { filter: url(#logo-type); } /* looks like the logo's "Glitch": the split and the tear (Base.astro) */
+  @media (forced-colors: active) { .brand .glitch { filter: none; } }
   ul { display: flex; flex-wrap: wrap; gap: 0 var(--u3); list-style: none; margin: 0; padding: 0; }
   nav a {
     display: inline-block; padding-block: var(--u1);
