@@ -17,7 +17,7 @@ for (const el of document.querySelectorAll('[data-glitch-hover]')) {
   el.addEventListener('pointerenter', () => glitch(target));
   el.addEventListener('focusin', () => glitch(target));
 }
-// Every 6 to 10 s the page title glitches, or the top section heading on screen once the title is scrolled away.
+// Every 3 to 5 s the page title glitches, or the top section heading on screen once the title is scrolled away.
 // Skipped while the tab is hidden or text is selected.
 function idleGlitch() {
   const sel = document.getSelection();
@@ -25,9 +25,9 @@ function idleGlitch() {
     const heading = [...document.querySelectorAll('h1 .glitch, h2')].find(inView);
     if (heading) glitch(heading);
   }
-  setTimeout(idleGlitch, 6000 + Math.random() * 4000);
+  setTimeout(idleGlitch, 3000 + Math.random() * 2000);
 }
-if (!reduce) setTimeout(idleGlitch, 6000 + Math.random() * 4000);
+if (!reduce) setTimeout(idleGlitch, 3000 + Math.random() * 2000);
 
 /* ---------- Pixel dissolve: a grid of background-coloured blocks clears in random order ---------- */
 export function dissolve(el: HTMLElement, colour = getComputedStyle(root).getPropertyValue('--bg'), ms = 650) {
