@@ -93,7 +93,7 @@ The design system (colours, type, spacing, components, motion rules) is at `/sty
 
 "Glitch arcade" on the Ember palette: a warm charcoal with the logo's red, orange and amber. Effects live in
 `src/scripts/effects.ts` and `src/components/FeatureBanner.astro`: the first-visit sprite loader, pixel-dissolve
-reveals, RGB-split glitches, tilting game tiles, scanlines over footage, a pixel cursor and optional sound. Every
+reveals, RGB-split glitches, tilting game tiles, scanlines over footage and a pixel cursor. Every
 effect is off with reduced motion, and every page is complete without JavaScript.
 
 ## Visuals

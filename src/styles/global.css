@@ -184,12 +184,13 @@ img, svg, video { display: block; max-width: 100%; height: auto; }
     radial-gradient(ellipse at center, rgb(0 0 0 / 0) 55%, rgb(0 0 0 / 0.55) 100%);
 }
 
-/* Glitch: the logo's colour split (the filters in Base.astro) flickers on text for under half a second, so headings are
-   always clean to read. effects.ts runs it on load, on hover, and now and then on one heading in view. */
+/* Glitch: the logo's colour split (the filters in Base.astro) blinks twice on a heading, under half a second in all, so
+   headings are always clean to read. effects.ts runs it on load, on hover, and every few seconds on the heading in view. */
 .is-glitching { animation: logo-split 0.45s step-end both; }
 h1 .is-glitching, h1.is-glitching, .loader .is-glitching { animation-name: logo-split-lg; }
-@keyframes logo-split { 0% { filter: url(#split-1); } 30% { filter: url(#split-2); } 55% { filter: url(#split-1); } 80%, 100% { filter: none; } }
-@keyframes logo-split-lg { 0% { filter: url(#split-2); } 30% { filter: url(#split-3); } 55% { filter: url(#split-2); } 80%, 100% { filter: none; } }
+@media (max-width: 999px) { h1 .is-glitching, h1.is-glitching { animation-name: logo-split; } } /* smaller titles, smaller split */
+@keyframes logo-split { 0%, 45% { filter: url(#split-2); } 30%, 75%, 100% { filter: none; } }
+@keyframes logo-split-lg { 0%, 45% { filter: url(#split-3); } 30%, 75%, 100% { filter: none; } }
 @media (forced-colors: active) { .is-glitching { animation: none; } }
 /* The same split for images and tiles, done with stacked drop shadows */
 .glitch-img.is-glitching { animation: glitch-img 0.42s steps(3) both; }

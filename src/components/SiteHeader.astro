@@ -24,12 +24,6 @@ const nav = [
         ))}
       </ul>
     </nav>
-    <button class="sound" type="button" data-sound-toggle aria-pressed="false" hidden>
-      <svg viewBox="0 0 11 11" width="22" height="22" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
-        <path d="M0 4h2v3H0zM2 3h1v5H2zM3 2h1v7H3zM4 1h1v9H4zM6 4h1v3H6zM7 3h1v1H7zM7 7h1v1H7zM8 2h1v1H8zM8 8h1v1H8zM9 3h1v5H9z" />
-      </svg>
-      <span data-sound-label>Sound Off</span>
-    </button>
   </div>
 </header>
 
@@ -54,15 +48,9 @@ const nav = [
   }
   nav a:hover, nav a[aria-current] { color: var(--amber); }
   nav a[aria-current] { text-decoration: underline 3px var(--accent); text-underline-offset: 8px; }
-  .sound {
-    display: inline-flex; align-items: center; gap: 6px; min-height: var(--u4); padding: 0 var(--u1);
-    color: var(--soft); background: none; border: 1px solid var(--line); font: 600 var(--b-small)/1 var(--font-body);
-  }
-  .sound[aria-pressed='true'] { color: var(--amber); border-color: var(--amber); }
   @media (max-width: 599px) {
     nav { order: 3; width: 100%; }
     ul { gap: 0 var(--u2); }
     nav a { font-size: 0.95rem; padding-block: 6px; }
-    .sound span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
   }
 </style>

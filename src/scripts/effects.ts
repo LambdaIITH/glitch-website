@@ -3,46 +3,7 @@
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = matchMedia('(pointer: fine)').matches;
 const root = document.documentElement;
-
-/* ---------- Sound: tiny synthesised blips, off until the visitor turns them on ---------- */
-let audio: AudioContext | null = null;
-let soundOn = false;
-try { soundOn = localStorage.getItem('glitch-sound') === 'on'; } catch {}
-function blip(freq = 880, ms = 45, type: OscillatorType = 'square', gain = 0.035) {
-  if (!soundOn) return;
-  audio ??= new AudioContext();
-  const osc = audio.createOscillator();
-  const vol = audio.createGain();
-  osc.type = type;
-  osc.frequency.value = freq;
-  vol.gain.setValueAtTime(gain, audio.currentTime);
-  vol.gain.exponentialRampToValueAtTime(0.0001, audio.currentTime + ms / 1000);
-  osc.connect(vol).connect(audio.destination);
-  osc.start();
-  osc.stop(audio.currentTime + ms / 1000);
-}
-for (const btn of document.querySelectorAll<HTMLButtonElement>('[data-sound-toggle]')) {
-  const sync = () => {
-    btn.setAttribute('aria-pressed', String(soundOn));
-    btn.querySelector('[data-sound-label]')!.textContent = soundOn ? 'Sound On' : 'Sound Off';
-  };
-  sync();
-  btn.hidden = false;
-  btn.addEventListener('click', () => {
-    soundOn = !soundOn;
-    try { localStorage.setItem('glitch-sound', soundOn ? 'on' : 'off'); } catch {}
-    sync();
-    blip(660, 60);
-    blip(990, 80);
-  });
-}
-document.addEventListener('pointerover', (e) => {
-  const t = (e.target as Element).closest('a, button');
-  if (t && !t.contains(e.relatedTarget as Node)) blip(1320, 25, 'square', 0.02);
-});
-document.addEventListener('click', (e) => {
-  if ((e.target as Element).closest('a, button')) blip(520, 70, 'triangle', 0.05);
-});
+const inView = (el: Element) => { const r = el.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; };
 
 /* ---------- RGB-split glitch ---------- */
 function glitch(el: Element) {
@@ -56,19 +17,17 @@ for (const el of document.querySelectorAll('[data-glitch-hover]')) {
   el.addEventListener('pointerenter', () => glitch(target));
   el.addEventListener('focusin', () => glitch(target));
 }
-// Now and then, one heading in view glitches. Skipped while the tab is hidden, text is selected or the pointer is on it.
+// Every 6 to 10 s the page title glitches, or the top section heading on screen once the title is scrolled away.
+// Skipped while the tab is hidden or text is selected.
 function idleGlitch() {
   const sel = document.getSelection();
   if (!document.hidden && (!sel || sel.isCollapsed)) {
-    const inView = [...document.querySelectorAll('h1 .glitch, h2, .brand .glitch')].filter((el) => {
-      const r = el.getBoundingClientRect();
-      return r.bottom > 0 && r.top < innerHeight && !el.matches(':hover');
-    });
-    if (inView.length) glitch(inView[Math.floor(Math.random() * inView.length)]);
+    const heading = [...document.querySelectorAll('h1 .glitch, h2')].find(inView);
+    if (heading) glitch(heading);
   }
-  setTimeout(idleGlitch, 7000 + Math.random() * 6000);
+  setTimeout(idleGlitch, 6000 + Math.random() * 4000);
 }
-if (!reduce) setTimeout(idleGlitch, 7000 + Math.random() * 6000);
+if (!reduce) setTimeout(idleGlitch, 6000 + Math.random() * 4000);
 
 /* ---------- Pixel dissolve: a grid of background-coloured blocks clears in random order ---------- */
 export function dissolve(el: HTMLElement, colour = getComputedStyle(root).getPropertyValue('--bg'), ms = 650) {
@@ -104,7 +63,6 @@ const reveal = (el: HTMLElement) => {
   if (el.hasAttribute('data-dissolve')) dissolve(el);
 };
 const watched = [...document.querySelectorAll<HTMLElement>('[data-reveal]')];
-const inView = (el: Element) => { const r = el.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; };
 for (const el of watched) if (inView(el)) el.classList.add('is-in'); // already on screen: show at once, no hide-flash
 root.classList.add('fx');
 if (reduce) watched.forEach((el) => el.classList.add('is-in'));
