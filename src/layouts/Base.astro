@@ -3,8 +3,9 @@ import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import display from '../fonts/big-shoulders-900.woff2?url';
-import heading from '../fonts/work-sans-latin.woff2?url';
-import body from '../fonts/atkinson-next-latin.woff2?url';
+import heading from '../fonts/tektur-700-latin.woff2?url';
+import body from '../fonts/chakra-petch-400-latin.woff2?url';
+import bodyBold from '../fonts/chakra-petch-700-latin.woff2?url';
 import hero2025 from '../assets/sprites/hero-2025.png';
 import heroDrippi from '../assets/sprites/hero-drippi.png';
 import heroCogito from '../assets/sprites/hero-cogito.png';
@@ -41,6 +42,7 @@ const parade = [
     <link rel="preload" href={heading} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={display} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={body} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={bodyBold} as="font" type="font/woff2" crossorigin />
     <meta name="theme-color" content="#141113" />
   </head>
   <body>
