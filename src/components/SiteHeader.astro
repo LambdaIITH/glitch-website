@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+
+interface Props { current?: string }
+const { current } = Astro.props;
+const nav = [
+  { id: 'games', href: '/games/', label: 'Games' },
+  { id: 'events', href: '/events/', label: 'Events' },
+  { id: 'scoreboard', href: '/scoreboard/', label: 'Scoreboard' },
+  { id: 'join', href: '/join/', label: 'Join' },
+];
+---
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="/" data-glitch-hover>
+      <Image class="glitch-img" src={logo} alt="" width={44} densities={[1, 2]} loading="eager" />
+      <span class="glitch" data-text="Glitch">Glitch</span>
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        {nav.map((n) => (
+          <li><a href={n.href} aria-current={current === n.id ? 'page' : undefined}>{n.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgb(20 17 19 / 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--u1) var(--u3); padding-block: var(--u1); }
+  .brand {
+    display: inline-flex; align-items: center; gap: var(--u1); margin-right: auto;
+    color: var(--text); text-decoration: none;
+    font: 600 1.625rem/1 var(--font-logo);
+  }
+  .brand :global(img) { width: 36px; height: auto; }
+  .brand .glitch { filter: url(#logo-type); } /* looks like the logo's "Glitch": the split and the tear (Base.astro) */
+  @media (forced-colors: active) { .brand .glitch { filter: none; } }
+  ul { display: flex; flex-wrap: wrap; gap: 0 var(--u3); list-style: none; margin: 0; padding: 0; }
+  nav a {
+    display: inline-block; padding-block: var(--u1);
+    color: var(--text); font-weight: 700; text-decoration: none;
+  }
+  nav a:hover, nav a[aria-current] { color: var(--amber); }
+  nav a[aria-current] { text-decoration: underline 3px var(--accent); text-underline-offset: 8px; }
+  @media (max-width: 599px) {
+    nav { order: 3; width: 100%; }
+    ul { gap: 0 var(--u2); }
+    nav a { font-size: 0.95rem; padding-block: 6px; }
+  }
+</style>

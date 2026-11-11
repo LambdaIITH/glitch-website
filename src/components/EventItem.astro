@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { image } from '../lib/images';
+import { kindLabel, when, type ClubEvent } from '../lib/events';
+
+interface Props { event: ClubEvent }
+const { event: e } = Astro.props;
+---
+<article class="event" id={e.slug} data-kind={e.kind}>
+  <div class="side">
+    <p class="when num">{when(e)}</p>
+    {e.image && <Image class="thumb" src={image(e.image)} alt="" widths={[240, 480]} sizes="240px" />}
+  </div>
+  <div>
+    <h3>{e.title}</h3>
+    <p class="meta small">
+      <span class="tag" data-kind={e.kind}><Icon name={e.kind} />{kindLabel[e.kind]}</span>
+      {e.with && <span>{e.with}</span>}
+      {e.venue && <span>{e.venue}</span>}
+      {e.time && <span>{e.time}</span>}
+    </p>
+    <p>{e.summary}</p>
+    {e.details && e.details.length > 0 && <ul class="details">{e.details.map((d) => <li>{d}</li>)}</ul>}
+    {e.links && e.links.length > 0 && (
+      <p class="links">
+        {e.links.map((l) => <a class="link-icon" href={l.url}>{l.label} <Icon name={l.url.startsWith('/') ? 'arrow' : 'external'} /></a>)}
+      </p>
+    )}
+  </div>
+</article>
+
+<style>
+  .event {
+    display: grid;
+    gap: var(--u1) var(--u4);
+    padding-block: var(--u3);
+    border-top: 1px solid var(--line);
+    scroll-margin-top: var(--u4);
+  }
+  @media (min-width: 768px) {
+    .event { grid-template-columns: 13rem minmax(0, 1fr); }
+  }
+  .when { margin: 6px 0 0; }
+  .side :global(.thumb) { width: 100%; max-width: 240px; margin-top: var(--u2); border: 1px solid var(--line); }
+  h3 { margin-bottom: var(--u1); }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 var(--u1);
+    color: var(--soft);
+  }
+  /* separators end each item, so a wrapped line never starts with one */
+  .meta > :not(:last-child)::after { content: "·"; margin-left: var(--u1); }
+  .details { padding-left: var(--u2); }
+  .details li + li { margin-top: 4px; }
+  .links { display: flex; flex-wrap: wrap; gap: var(--u1) var(--u3); }
+  .event:target h3 { text-decoration: underline 3px var(--orange); text-underline-offset: 8px; }
+</style>

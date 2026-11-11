@@ -1,0 +1,81 @@
+---
+// A frozen scoreboard. The HTML always holds the final numbers; JS only replays the count-up once.
+// A column with `sub` becomes a second line under the first text column on phones, e.g. "50 players counted".
+interface Column { key: string; label: string; num?: boolean; sub?: string }
+interface Props {
+  caption: string;
+  columns: Column[];
+  rows: Record<string, string | number>[];
+}
+const { caption, columns, rows } = Astro.props;
+const fmt = new Intl.NumberFormat('en-IN');
+const show = (c: Column, v: string | number) => (c.num ? fmt.format(Number(v)) : v);
+const main = columns.find((c) => !c.num && c.sub === undefined);
+const subs = columns.filter((c) => c.sub !== undefined);
+---
+<table class="board" data-tick>
+  <caption>{caption}</caption>
+  <thead>
+    <tr>
+      <th scope="col">Rank</th>
+      {columns.map((c) => (
+        <th scope="col" class:list={{ num: c.num, 'as-sub': c.sub !== undefined }}>{c.label}</th>
+      ))}
+    </tr>
+  </thead>
+  <tbody>
+    {rows.map((r) => (
+      <tr>
+        <td class="num rank">{r.rank}</td>
+        {columns.map((c) => (
+          <td class:list={{ num: c.num, 'as-sub': c.sub !== undefined }} data-value={c.num ? r[c.key] : undefined}>
+            {show(c, r[c.key])}
+            {c === main && subs.map((s) => <span class="sub">{show(s, r[s.key])}{s.sub && ` ${s.sub}`}</span>)}
+          </td>
+        ))}
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+<style>
+  .sub { display: none; }
+  @media (max-width: 559px) {
+    .sub {
+      display: block;
+      font-size: var(--b-small);
+      color: var(--soft);
+    }
+    .as-sub { display: none; }
+  }
+</style>
+
+<script>
+  // Count up once, the first time the board is on screen. Zero padding keeps every column the same width.
+  const fmt = (v: number, digits: number) => v.toLocaleString('en-IN', { minimumIntegerDigits: digits });
+
+  const tick = (table: Element) => {
+    const cells = [...table.querySelectorAll<HTMLElement>('td[data-value]')];
+    const frames = 12;
+    let f = 0;
+    const id = setInterval(() => {
+      f++;
+      for (const c of cells) {
+        const v = Number(c.dataset.value);
+        c.textContent = f < frames ? fmt(Math.round((v * f) / frames), String(v).length) : v.toLocaleString('en-IN');
+      }
+      if (f === frames) clearInterval(id);
+    }, 70);
+  };
+
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        io.unobserve(e.target);
+        tick(e.target);
+      }
+    }, { threshold: 0.4 });
+    document.querySelectorAll('table[data-tick]').forEach((t) => io.observe(t));
+  }
+</script>

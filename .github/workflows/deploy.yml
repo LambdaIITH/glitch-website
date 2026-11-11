@@ -1,0 +1,25 @@
+# Builds the site with the shared SciTech build (LambdaIITH/scitech-hosting): runs the tests and the content check,
+# builds, and publishes dist/ to the `deploy` branch, which the SciTech server serves at https://glitch.iith.dev.
+# Pull requests only get the build, as a check. The nightly run keeps Home's "next event" line current.
+name: Build and publish
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "30 18 * * *" # 00:00 IST
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  build:
+    uses: LambdaIITH/scitech-hosting/.github/workflows/build.yml@main
+    permissions:
+      contents: write # to publish the build to the deploy branch
+    with:
+      url: https://glitch.iith.dev/
+      node: "22"
+      command: npm test && npm run build # the build fails on unsafe content (src/lib/schema.ts)
+      output: dist

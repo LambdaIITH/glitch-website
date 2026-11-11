@@ -1,0 +1,230 @@
+{
+  "game": "Cogito",
+  "source": "Frozen final standings from glitch.iith.dev/leaderboard (commit 250a1be, 4 Oct 2026)",
+  "players": [
+    {
+      "rank": 1,
+      "name": "J R Gokul Aadarsh",
+      "hostel": "Raman",
+      "score": 6784
+    },
+    {
+      "rank": 2,
+      "name": "Merwyn Kumar Kollabathula",
+      "hostel": "Raman",
+      "score": 6724
+    },
+    {
+      "rank": 3,
+      "name": "Chepuri Susheel Chandra",
+      "hostel": "Raman",
+      "score": 6402
+    },
+    {
+      "rank": 4,
+      "name": "Tarun V",
+      "hostel": "Raman",
+      "score": 6292
+    },
+    {
+      "rank": 5,
+      "name": "Lalitkumar Elaiyaraja",
+      "hostel": "Raman",
+      "score": 6204
+    },
+    {
+      "rank": 6,
+      "name": "Banoth Preetham",
+      "hostel": "Raman",
+      "score": 6165
+    },
+    {
+      "rank": 7,
+      "name": "Korra Vishal",
+      "hostel": "Raman",
+      "score": 6123
+    },
+    {
+      "rank": 8,
+      "name": "Yeruva Venkata Vamsi Reddy",
+      "hostel": "Raman",
+      "score": 6035
+    },
+    {
+      "rank": 9,
+      "name": "Abhinav Thodati",
+      "hostel": "Vivekananda",
+      "score": 5988
+    },
+    {
+      "rank": 10,
+      "name": "M K Vishok",
+      "hostel": "Raman",
+      "score": 5763
+    },
+    {
+      "rank": 11,
+      "name": "Kodepaka Jeevan Paul",
+      "hostel": "Raman",
+      "score": 5691
+    },
+    {
+      "rank": 12,
+      "name": "Pavan Dev Yarakala",
+      "hostel": "Raman",
+      "score": 5652
+    },
+    {
+      "rank": 13,
+      "name": "Chinthapally Purna Nanda Reddy",
+      "hostel": "Raman",
+      "score": 5604
+    },
+    {
+      "rank": 14,
+      "name": "Guntaka Anudeep Reddy",
+      "hostel": "Vivekananda",
+      "score": 5561
+    },
+    {
+      "rank": 15,
+      "name": "Saket Tamrakar",
+      "hostel": "Vivekananda",
+      "score": 5488
+    },
+    {
+      "rank": 16,
+      "name": "Sheshadri Rathan C S",
+      "hostel": "Raman",
+      "score": 5484
+    },
+    {
+      "rank": 17,
+      "name": "Palla Roshan",
+      "hostel": "Raman",
+      "score": 5437
+    },
+    {
+      "rank": 18,
+      "name": "Bairi Varshith",
+      "hostel": "Raman",
+      "score": 5374
+    },
+    {
+      "rank": 19,
+      "name": "Shaswath S",
+      "hostel": "Raman",
+      "score": 5296
+    },
+    {
+      "rank": 20,
+      "name": "Dwarak A",
+      "hostel": "Brahmagupta + Vyasa",
+      "score": 5174
+    }
+  ],
+  "hostels": [
+    {
+      "rank": 1,
+      "hostel": "Kalam",
+      "score": 142188,
+      "players": 50
+    },
+    {
+      "rank": 2,
+      "hostel": "Raman",
+      "score": 132842,
+      "players": 49
+    },
+    {
+      "rank": 3,
+      "hostel": "SN Bose",
+      "score": 51646,
+      "players": 50
+    },
+    {
+      "rank": 4,
+      "hostel": "Vivekananda",
+      "score": 48635,
+      "players": 43
+    },
+    {
+      "rank": 5,
+      "hostel": "Ramanujan",
+      "score": 21146,
+      "players": 28
+    },
+    {
+      "rank": 6,
+      "hostel": "Brahmagupta + Vyasa",
+      "score": 13351,
+      "players": 16
+    },
+    {
+      "rank": 7,
+      "hostel": "Varahamihira + Charaka",
+      "score": 7129,
+      "players": 13
+    },
+    {
+      "rank": 8,
+      "hostel": "Sarabhai",
+      "score": 4117,
+      "players": 7
+    },
+    {
+      "rank": 9,
+      "hostel": "Bhaskara + Susrutha",
+      "score": 2036,
+      "players": 13
+    },
+    {
+      "rank": 10,
+      "hostel": "Anandi",
+      "score": 1436,
+      "players": 2
+    },
+    {
+      "rank": 11,
+      "hostel": "Gargi",
+      "score": 1329,
+      "players": 2
+    },
+    {
+      "rank": 12,
+      "hostel": "Bhabha + Kautilya",
+      "score": 798,
+      "players": 2
+    },
+    {
+      "rank": 13,
+      "hostel": "Visweswaraya",
+      "score": 433,
+      "players": 3
+    },
+    {
+      "rank": 14,
+      "hostel": "Kalpana Chawla",
+      "score": 324,
+      "players": 5
+    },
+    {
+      "rank": 15,
+      "hostel": "Ramanuja",
+      "score": 251,
+      "players": 2
+    },
+    {
+      "rank": 16,
+      "hostel": "Sarojini Naidu",
+      "score": 98,
+      "players": 1
+    },
+    {
+      "rank": 17,
+      "hostel": "Maitreyi",
+      "score": 0,
+      "players": 1
+    }
+  ]
+}

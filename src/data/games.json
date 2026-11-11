@@ -1,0 +1,107 @@
+[
+  {
+    "slug": "cogito",
+    "title": "Cogito",
+    "tagline": "Break out, set a score, rep your hostel.",
+    "summary": "You play a robot trying to break out of a facility of your own kin. Room layouts, enemies and upgrades are randomly generated, so every run is different. Our website game for Milan 2026.",
+    "status": "Archived",
+    "genre": "Roguelike",
+    "platforms": [
+      "Web"
+    ],
+    "tags": [
+      "Roguelike",
+      "Unity",
+      "Milan 2026"
+    ],
+    "page": "/games/cogito/",
+    "linkText": "About Cogito and its final standings",
+    "image": "cogito/boss.webp",
+    "alt": "Cogito's robot squaring up to a red armoured boss",
+    "footage": {
+      "src": "/footage/cogito-run.mp4",
+      "poster": "footage/cogito-poster.webp"
+    }
+  },
+  {
+    "slug": "drippi-droppo",
+    "title": "Drippi Droppo",
+    "tagline": "One tiny droplet vs. the environment.",
+    "summary": "A short, punishing 2D physics platformer starring a droplet just trying to get from one end of a level to the other. One wrong move and it's back to the start.",
+    "status": "Released",
+    "genre": "Platformer",
+    "platforms": [
+      "Windows"
+    ],
+    "tags": [
+      "Platformer",
+      "Pixel art"
+    ],
+    "link": "https://glitchiith.itch.io/drippi-droppo",
+    "image": "games/drippi-droppo.webp",
+    "alt": "Drippi Droppo: a blue pixel-art droplet in a lilac level, with the hint “AD to move, W to jump”"
+  },
+  {
+    "slug": "pyrofrost",
+    "title": "PyroFrost",
+    "tagline": "Hot and cold — never both at once.",
+    "summary": "A fast, grid-based puzzle-arcade game for phones. Your ball switches between fire and ice; touch a tile that clashes with your element and it's game over.",
+    "status": "Released",
+    "genre": "Puzzle",
+    "platforms": [
+      "Android"
+    ],
+    "tags": [
+      "Puzzle",
+      "Arcade",
+      "Unity"
+    ],
+    "link": "https://glitchiith.itch.io/pyrofrost",
+    "image": "games/pyrofrost-play.webp",
+    "alt": "PyroFrost: the lava ball rolling across dark hexagon tiles over a field of lava"
+  },
+  {
+    "slug": "rowmance",
+    "title": "Rowmance",
+    "summary": "A co-op rage game over a local network: you and a friend each take one paddle and have to sync up to steer a single boat through checkpoint courses without flipping, fighting the current, or ruining your friendship.",
+    "status": "Released",
+    "genre": "Co-op",
+    "platforms": [
+      "Windows",
+      "macOS",
+      "Linux"
+    ],
+    "tags": [
+      "Co-op",
+      "Rage game",
+      "Unity",
+      "Blender"
+    ],
+    "link": "https://glitchiith.itch.io/rowmance",
+    "image": "games/rowmance.webp",
+    "alt": "Rowmance's title screen: two rowers in a wooden boat on a jungle river",
+    "focus": "78% 55%"
+  },
+  {
+    "slug": "milan-2025-website-game",
+    "title": "Milan 2025 Website Game",
+    "summary": "The inter-hostel website game for Milan 2025: sign in with your college email, find five hidden minigames and score as much as you can. Each hostel's top 50 scores added up.",
+    "status": "Archived",
+    "genre": "Website Game",
+    "platforms": [
+      "Web"
+    ],
+    "tags": [
+      "Minigames",
+      "Milan 2025"
+    ],
+    "page": "/events/#milan-2025-website-game",
+    "linkText": "Event details",
+    "image": "games/milan-2025.webp",
+    "alt": "The hooded hero walking through a moonlit courtyard lit by fireflies",
+    "footage": {
+      "src": "/footage/milan-2025-walk.mp4",
+      "poster": "footage/milan-2025-poster.webp"
+    }
+  }
+]

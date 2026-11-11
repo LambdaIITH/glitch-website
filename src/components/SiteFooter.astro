@@ -1,0 +1,54 @@
+---
+import BrandIcon from './BrandIcon.astro';
+import club from '../lib/club';
+
+const links = [
+  { href: club.discord, label: 'Discord', icon: 'discord' },
+  { href: club.itch, label: 'itch.io', icon: 'itch' },
+  { href: club.instagram, label: 'Instagram', icon: 'instagram' },
+  { href: club.linkedin, label: 'LinkedIn', icon: 'linkedin' },
+  { href: club.github, label: 'GitHub', icon: 'github' },
+] as const;
+---
+<footer class="site-footer">
+  <section class="wrap contact" id="contact" aria-labelledby="contact-title">
+    <div>
+      <h2 id="contact-title">Contact Us</h2>
+      <p class="lead soft">Want to work with us, invite us to an event or ask about the club? Mail us or find us on Discord.</p>
+    </div>
+    <div>
+      <a class="mail" href={`mailto:${club.email}`}><BrandIcon name="mail" /><span>{club.email}</span></a>
+      <ul class="socials">
+        {links.map((l) => (
+          <li><a class="btn btn-quiet" href={l.href}><BrandIcon name={l.icon} />{l.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <div class="wrap">
+    <p class="small soft legal">
+      © {new Date().getFullYear()} Glitch, IIT Hyderabad · Made with <span class="heart" aria-hidden="true">♥</span><span class="visually-hidden">love</span> by Lambda
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer { margin-top: var(--u12); padding-block: var(--u8) var(--u4); background: var(--panel); border-top: 1px solid var(--line); }
+  .contact { display: grid; gap: var(--u3) var(--u6); align-items: center; }
+  @media (min-width: 900px) { .contact { grid-template-columns: 1fr 1fr; } }
+  h2 { margin-top: 0; }
+  .lead { margin-bottom: 0; }
+  /* The address is the thing outsiders need, so it gets heading-size type */
+  .mail {
+    display: inline-flex; align-items: center; gap: var(--u2); max-width: 100%;
+    color: var(--amber); font: 700 clamp(1.25rem, 2.6vw, 2rem)/1.2 var(--font-heading); text-decoration: none;
+  }
+  .mail span { overflow-wrap: anywhere; }
+  .mail:hover span { text-decoration: underline 3px var(--accent); text-underline-offset: 8px; }
+  .mail :global(.brand) { flex: none; width: 1.25em; height: 1.25em; }
+  .socials { display: flex; flex-wrap: wrap; gap: var(--u1); list-style: none; padding: 0; margin: var(--u3) 0 0; }
+  .socials :global(.brand) { width: 22px; height: 22px; color: var(--amber); }
+  .socials a:hover :global(.brand) { color: inherit; }
+  .legal { max-width: none; margin: var(--u6) 0 0; padding-top: var(--u3); border-top: 1px solid var(--line); }
+  .heart { font-family: var(--font-pixel); color: var(--accent); }
+</style>

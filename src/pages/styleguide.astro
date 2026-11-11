@@ -1,0 +1,121 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import BrandIcon from '../components/BrandIcon.astro';
+import GameTile from '../components/GameTile.astro';
+import { games } from '../lib/games';
+import club from '../lib/club';
+import hero2025 from '../assets/sprites/hero-2025.png';
+import heroDrippi from '../assets/sprites/hero-drippi.png';
+import heroCogito from '../assets/sprites/hero-cogito.png';
+import heroPyro from '../assets/sprites/hero-pyrofrost.png';
+import heroRow from '../assets/sprites/hero-rowmance.png';
+
+const colours = [
+  { token: 'bg', hex: '#141113', use: 'Page background, warm charcoal', ratio: '–' },
+  { token: 'panel', hex: '#1f1a1d', use: 'Tiles, footer, fact boxes', ratio: '–' },
+  { token: 'panel-2', hex: '#2a2327', use: 'Quiet buttons, hovered tiles', ratio: '–' },
+  { token: 'text', hex: '#f3ece4', use: 'Body text', ratio: '16.0' },
+  { token: 'soft', hex: '#b7aca3', use: 'Secondary text', ratio: '8.4' },
+  { token: 'accent', hex: '#ff5a1f', use: 'Main action buttons (dark text on it: 6.0)', ratio: '6.0' },
+  { token: 'amber', hex: '#ffb547', use: 'Links, focus rings, scores', ratio: '10.7' },
+  { token: 'red', hex: '#f03808', use: 'Logo red: glitch channel, E-Sports tag', ratio: '–' },
+  { token: 'orange', hex: '#d87840', use: 'Logo orange: GameDev tag', ratio: '–' },
+  { token: 'cool', hex: '#2fd3c7', use: 'Second glitch channel only, never text', ratio: '–' },
+];
+const sprites = [hero2025, heroDrippi, heroCogito, heroPyro, heroRow];
+const icons = ['arrow', 'back', 'external', 'play', 'pause', 'stairs', 'door', 'die', 'at'] as const;
+---
+<Base title="Style Guide" description="The colours, type, components and motion rules of the Glitch site." noindex>
+  <div class="wrap page">
+    <p class="label">Design System · Glitch Arcade</p>
+    <h1><span class="glitch" data-text="Style Guide" data-glitch-load>Style Guide</span></h1>
+    <p class="lead">The parts every Glitch page is built from: Ember colours, the logo's typeface for headings, pixel details, and motion that never gets in the way.</p>
+
+    <section>
+      <h2>Colour</h2>
+      <p class="soft">A tinted near-black with the logo's own red, orange and amber. Ratios are text contrast on the background.</p>
+      <ul class="swatches">
+        {colours.map((c) => (
+          <li><span class="swatch" style={`background:${c.hex}`}></span><span><code>--{c.token}</code> <span class="small soft">{c.hex}{c.ratio !== '–' && ` · ${c.ratio}:1`}</span><br />{c.use}</span></li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2>Type</h2>
+      <p class="spec-1">Big Headlines</p>
+      <p class="small soft">Tektur Bold for every heading, in Title Case.</p>
+      <h3>Smaller Headings in Title Case</h3>
+      <p class="small soft">Tektur Bold, 24px.</p>
+      <p class="num spec-2">Score 1,42,188</p>
+      <p class="small soft">Departure Mono for numbers, dates and scores, only at multiples of 11px. <span class="label">Labels Use Big Shoulders, Small and in Title Case</span></p>
+      <p>Chakra Petch for everything you read, the menu and buttons. Work Sans, the logo's typeface, only draws the header's "Glitch". Titles, labels, buttons and navigation are in Title Case; running text is in sentence case.</p>
+    </section>
+
+    <section>
+      <h2>Buttons and Links</h2>
+      <p class="row">
+        <a class="btn" href={club.discord}>Join the Discord <Icon name="external" /></a>
+        <a class="btn btn-quiet" href="/games/">See Our Games <Icon name="arrow" /></a>
+      </p>
+      <p>Links read like <a href="/events/">this</a>; links that leave the site carry an arrow: <a class="link-icon" href={club.itch}>our games on itch.io <Icon name="external" /></a></p>
+      <p class="soft small">Buttons are one tile (44px) tall with pixel-stepped corners. One solid button per screen. Focus is a 3px amber ring on everything.</p>
+      <p class="row">
+        <span class="tag" data-kind="game-dev"><Icon name="game-dev" />GameDev</span>
+        <span class="tag" data-kind="esports"><Icon name="esports" />E-Sports</span>
+        <span class="tag" data-kind="community"><Icon name="community" />Community</span>
+        <span class="placeholder">Placeholder</span>
+      </p>
+    </section>
+
+    <section>
+      <h2>Game Tiles</h2>
+      <p class="soft">Every game gets the same tile: its art under a scanline layer, then its name. Hover or focus to see the tilt and glitch.</p>
+      <div class="tile-demo"><GameTile game={games[1] as any} /></div>
+    </section>
+
+    <section>
+      <h2>Icons and Sprites</h2>
+      <ul class="icons">
+        {icons.map((n) => <li><Icon name={n} /><span class="small soft">{n}</span></li>)}
+        {(['discord', 'itch', 'instagram', 'linkedin', 'github', 'mail'] as const).map((n) => <li><BrandIcon name={n} /><span class="small soft">{n}</span></li>)}
+      </ul>
+      <p class="soft small">Pixel icons are drawn on an 11×11 grid. Brand marks come from Simple Icons (CC0); LinkedIn and mail are drawn here.</p>
+      <div class="sprites">
+        {sprites.map((s) => <img src={s.src} width={s.width * 4} height={s.height * 4} alt="" />)}
+      </div>
+      <p class="soft small">The loader's parade: one hero from every game, cut from the club's builds and itch.io art.</p>
+    </section>
+
+    <section>
+      <h2>Motion</h2>
+      <ul class="rules">
+        <li><b>Sprite loader:</b> on a first visit only, the five heroes run across while the page loads, then the screen dissolves into pixels. Skippable with a click or any key.</li>
+        <li><b>Footage:</b> gameplay loops behind the Home banner and on game pages, under scanlines. They only play while on screen.</li>
+        <li><b>Pixel dissolve:</b> tiles and screenshots build in from pixel blocks as they scroll into view; banner slides dissolve into each other.</li>
+        <li><b>Glitch:</b> the logo's pink and cyan split blinks twice on a heading, under half a second in all. The page title glitches on load and then every 3 to 5 seconds; once it's scrolled away, the top section heading on screen takes over. Not while the tab is hidden or text is being selected. The logo and game tiles glitch on hover and focus.</li>
+        <li><b>Tilt:</b> game tiles lean toward the pointer on desktop.</li>
+        <li><b>Always:</b> nothing traps scrolling or blocks reading; with reduced motion every effect is off and footage shows a still; without JavaScript every page is complete.</li>
+      </ul>
+    </section>
+  </div>
+</Base>
+
+<style>
+  section { margin-top: var(--u8); }
+  .swatches { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); gap: var(--u2) var(--u4); }
+  .swatches li { display: grid; grid-template-columns: var(--u4) 1fr; gap: var(--u2); align-items: start; }
+  .swatch { display: block; width: var(--u4); height: var(--u4); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.15); }
+  code { font-family: var(--font-pixel); font-size: 22px; color: var(--amber); }
+  .spec-1 { margin: 0; font: 700 clamp(2.75rem, 7vw, 5.5rem)/1.1 var(--font-heading); }
+  .spec-2 { margin: var(--u3) 0 6px; font-size: 44px; color: var(--amber); }
+  .row { display: flex; flex-wrap: wrap; gap: var(--u2); align-items: center; }
+  .tile-demo { max-width: 320px; }
+  .icons { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--u2) var(--u4); }
+  .icons li { display: flex; align-items: center; gap: var(--u1); color: var(--amber); }
+  .icons :global(.brand) { width: 22px; height: 22px; }
+  .sprites { display: flex; align-items: flex-end; gap: var(--u4); margin: var(--u3) 0 var(--u1); }
+  .sprites img { image-rendering: pixelated; }
+  .rules li { margin-bottom: var(--u1); max-width: 70ch; }
+</style>

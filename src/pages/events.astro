@@ -1,0 +1,82 @@
+---
+import Icon from '../components/Icon.astro';
+import Base from '../layouts/Base.astro';
+import EventItem from '../components/EventItem.astro';
+import { events, kindLabel, type Kind } from '../lib/events';
+
+const years = [...new Set(events.map((e) => e.start.slice(0, 4)))];
+const kinds = Object.keys(kindLabel) as Kind[];
+const count = (k: Kind) => events.filter((e) => e.kind === k).length;
+---
+<Base title="Events" current="events" description="Game jams, workshops and E-Sports tournaments run or co-hosted by Glitch, IIT Hyderabad's video game club.">
+  <div class="wrap page">
+  <h1><span class="glitch" data-text="Events" data-glitch-load>Events</span></h1>
+  <p class="lead">Game jams, workshops and tournaments we've run or co-hosted since 2024, newest first.</p>
+
+  <div class="log">
+    <!-- CSS-only filter: works without JavaScript -->
+    <fieldset class="filters">
+      <legend>Show</legend>
+      <div class="chips">
+      <label class="chip"><input type="radio" name="kind" value="all" checked /> All <span class="count">{events.length}</span></label>
+      {kinds.map((k) => (
+        <label class="chip">
+          <input type="radio" name="kind" value={k} />
+          <span class="tag" data-kind={k}><Icon name={k} />{kindLabel[k]}</span>
+          <span class="count">{count(k)}</span>
+        </label>
+      ))}
+      </div>
+    </fieldset>
+
+    {years.map((y) => (
+      <section class="year" aria-labelledby={`year-${y}`}>
+        <h2 id={`year-${y}`}>{y}</h2>
+        {events.filter((e) => e.start.startsWith(y)).map((e) => <EventItem event={e} />)}
+      </section>
+    ))}
+  </div>
+  </div>
+</Base>
+
+<style>
+  .filters { margin: var(--u4) 0 0; padding: 0; border: 0; }
+  legend { margin-bottom: var(--u1); padding: 0; font: 900 1.25rem/1.15 var(--font-display); letter-spacing: 0.03em; color: var(--soft); }
+  .chips { display: flex; flex-wrap: wrap; gap: var(--u1); }
+  .chip {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--u1);
+    min-height: var(--u4);
+    padding: 0 var(--u2);
+    border: 2px solid var(--line);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .chip input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+  .chip:hover { background: var(--panel); }
+  .chip:has(input:focus-visible) { outline: 3px solid var(--amber); outline-offset: 3px; }
+  .chip:has(input:checked) { background: var(--amber); border-color: var(--amber); color: var(--bg); }
+  .chip:has(input:checked) :global(.tag), .chip:has(input:checked) :global(.tag .icon) { color: var(--bg); }
+  .count { font-weight: 400; }
+
+  .year { margin-top: var(--u8); }
+</style>
+
+<style is:global>
+  /* Filtering. Global on purpose: events are rendered by EventItem, outside this page's style scope. */
+  .log:has(input[value='game-dev']:checked) .event:not([data-kind='game-dev']),
+  .log:has(input[value='esports']:checked) .event:not([data-kind='esports']),
+  .log:has(input[value='community']:checked) .event:not([data-kind='community']),
+  .log:has(input[value='game-dev']:checked) .year:not(:has(.event[data-kind='game-dev'])),
+  .log:has(input[value='esports']:checked) .year:not(:has(.event[data-kind='esports'])),
+  .log:has(input[value='community']:checked) .year:not(:has(.event[data-kind='community'])) {
+    display: none;
+  }
+</style>

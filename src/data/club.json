@@ -1,0 +1,13 @@
+{
+  "email": "glitch@gymkhana.iith.ac.in",
+  "discord": "https://discord.gg/xRAQffhUjv",
+  "itch": "https://glitchiith.itch.io/",
+  "instagram": "https://www.instagram.com/glitch.iith",
+  "linkedin": "https://www.linkedin.com/company/glitch-iith",
+  "github": "https://github.com/glitchiith",
+  "leads": [
+    { "name": "Vijay S. Badde", "role": "Overall Coordinator" },
+    { "name": "Devadath Sabarish", "role": "Game Development Head" },
+    { "name": "Dhwanith M. Doddahundi", "role": "E-Sports Head" }
+  ]
+}

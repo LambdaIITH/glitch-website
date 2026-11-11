@@ -1,0 +1,56 @@
+---
+import Base from '../../layouts/Base.astro';
+import GameTile from '../../components/GameTile.astro';
+import Icon from '../../components/Icon.astro';
+import { games } from '../../lib/games';
+import { events, when } from '../../lib/events';
+
+const jams = events.filter((e) => e.type === 'Game Jam');
+---
+<Base title="Games" current="games" description="Games made by Glitch, the video game club of IIT Hyderabad, and the game jams we run.">
+  <section class="wrap intro">
+    <p class="label">Made at IIT Hyderabad</p>
+    <h1><span class="glitch" data-text="Games" data-glitch-load>Games</span></h1>
+    <p class="lead">Everything the club has shipped: our Milan website games, and the games on our itch.io page.</p>
+  </section>
+
+  <section class="wrap wall" aria-label="All games">
+    {games.map((g) => <GameTile game={g as any} />)}
+  </section>
+
+  <section class="wrap jams" aria-labelledby="jams">
+    <h2 id="jams" data-reveal>Jams</h2>
+    <p class="soft" data-reveal>Game jams we've run, with links to their entries where they're public.</p>
+    <ul>
+      {jams.map((j) => {
+        const page = j.links?.find((l) => l.url.includes('itch.io/jam'));
+        return (
+          <li data-reveal>
+            <span class="num">{when(j, true)}</span>
+            <div>
+              <h3>{j.title}</h3>
+              <p class="soft">{j.summary}</p>
+              {page ? (
+                <a class="link-icon" href={page.url}>Jam Page on itch.io <Icon name="external" /></a>
+              ) : (
+                <a class="link-icon" href={`/events/#${j.slug}`}>Event Details <Icon name="arrow" /></a>
+              )}
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .intro { padding-top: var(--u8); }
+  .wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--u2); margin-top: var(--u4); }
+  .jams { margin-top: var(--u12); }
+  .jams ul { list-style: none; padding: 0; margin: var(--u3) 0 0; border-top: 1px solid var(--line); }
+  .jams li { display: grid; gap: var(--u1) var(--u4); padding-block: var(--u3); border-bottom: 1px solid var(--line); }
+  @media (min-width: 768px) { .jams li { grid-template-columns: 17rem minmax(0, 1fr); } }
+  .jams .num { color: var(--amber); }
+  .jams h3 { margin-bottom: 6px; }
+  .jams p { margin-bottom: var(--u1); }
+</style>
