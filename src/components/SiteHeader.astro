@@ -9,6 +9,7 @@ const nav = [
   { id: 'events', href: '/events/', label: 'Events' },
   { id: 'scoreboard', href: '/scoreboard/', label: 'Scoreboard' },
   { id: 'join', href: '/join/', label: 'Join' },
+  { id: 'contact', href: '#contact', label: 'Contact' },
 ];
 ---
 <header class="site-header">
@@ -52,7 +53,7 @@ const nav = [
   nav a[aria-current] { text-decoration: underline 3px var(--accent); text-underline-offset: 8px; }
   @media (max-width: 599px) {
     nav { order: 3; width: 100%; }
-    ul { gap: 0 var(--u2); }
-    nav a { font-size: 0.95rem; padding-block: 6px; }
+    ul { gap: 0 var(--u1); justify-content: space-between; }
+    nav a { font-size: 0.9rem; padding-block: 6px; }
   }
 </style>

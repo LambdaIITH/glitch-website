@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
-import BrandIcon from '../components/BrandIcon.astro';
 import club from '../lib/club';
 
 // The club's two domains, as its selection mails describe them
@@ -9,16 +8,8 @@ const domains = [
   { name: 'GameDev', what: 'Making games from scratch: programming the gameplay, and designing characters, 3D models, animation, 2D assets and UI.' },
   { name: 'E-Sports', what: 'Planning and running our tournaments, promotion and event banners, and playtesting and bug-hunting the games GameDev makes.' },
 ];
-const contacts = [
-  { label: 'Discord', href: club.discord, text: 'Glitch Basement', icon: 'discord' },
-  { label: 'Email', href: `mailto:${club.email}`, text: club.email, icon: 'mail' },
-  { label: 'itch.io', href: club.itch, text: 'glitchiith.itch.io', icon: 'itch' },
-  { label: 'Instagram', href: club.instagram, text: '@glitch.iith', icon: 'instagram' },
-  { label: 'LinkedIn', href: club.linkedin, text: 'glitch-iith', icon: 'linkedin' },
-  { label: 'GitHub', href: club.github, text: 'glitchiith', icon: 'github' },
-] as const;
 ---
-<Base title="Join" current="join" description="How to join Glitch, IIT Hyderabad's video game club: the Discord, our two domains and who to contact.">
+<Base title="Join" current="join" description="How to join Glitch, IIT Hyderabad's video game club: the Discord, our two domains and who leads it.">
   <div class="wrap page">
   <h1><span class="glitch" data-text="Join Glitch" data-glitch-load>Join Glitch</span></h1>
   <p class="lead">
@@ -47,26 +38,19 @@ const contacts = [
     </ul>
   </section>
 
-  <section>
-    <h2>Contact</h2>
-    <dl class="contacts">
-      {contacts.map((c) => (<><dt><BrandIcon name={c.icon} />{c.label}</dt><dd><a href={c.href}>{c.text}</a></dd></>))}
-    </dl>
-  </section>
   </div>
 </Base>
 
 <style>
   section { margin-top: var(--u8); }
   .leads li { padding: var(--u2); background: var(--panel); }
-  .domains, .contacts {
+  .domains {
     display: grid;
     grid-template-columns: max-content minmax(0, 1fr);
     gap: var(--u1) var(--u4);
     margin: 0 0 var(--u2);
   }
   dt { font-weight: 700; display: inline-flex; align-items: center; gap: var(--u1); }
-  dt :global(.brand) { width: 22px; height: 22px; color: var(--amber); }
   dd { margin: 0; overflow-wrap: anywhere; }
   .domains dt { font: 700 1.375rem/1.2 var(--font-heading); color: var(--amber); }
   @media (max-width: 559px) {

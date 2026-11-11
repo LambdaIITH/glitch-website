@@ -1,23 +1,35 @@
 ---
 import BrandIcon from './BrandIcon.astro';
+import Icon from './Icon.astro';
 import club from '../lib/club';
 
 const links = [
-  { href: club.discord, label: 'Discord', icon: 'discord' },
-  { href: club.itch, label: 'itch.io', icon: 'itch' },
-  { href: club.instagram, label: 'Instagram', icon: 'instagram' },
-  { href: club.linkedin, label: 'LinkedIn', icon: 'linkedin' },
-  { href: club.github, label: 'GitHub', icon: 'github' },
-  { href: `mailto:${club.email}`, label: club.email, icon: 'mail' },
+  { href: club.discord, label: 'Discord', text: 'Glitch Basement', icon: 'discord' },
+  { href: club.itch, label: 'itch.io', text: 'glitchiith.itch.io', icon: 'itch' },
+  { href: club.instagram, label: 'Instagram', text: '@glitch.iith', icon: 'instagram' },
+  { href: club.linkedin, label: 'LinkedIn', text: 'glitch-iith', icon: 'linkedin' },
+  { href: club.github, label: 'GitHub', text: 'glitchiith', icon: 'github' },
 ] as const;
 ---
 <footer class="site-footer">
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact-inner">
+      <div>
+        <h2 id="contact-title">Contact Us</h2>
+        <p class="lead">Want to work with us, invite us to an event or ask about the club? Mail us or find us on Discord.</p>
+        <p class="actions">
+          <a class="btn" href={`mailto:${club.email}`}><BrandIcon name="mail" />{club.email}</a>
+          <a class="btn btn-quiet" href={club.discord}>Join the Discord <Icon name="external" /></a>
+        </p>
+      </div>
+      <ul class="socials">
+        {links.map((l) => (
+          <li><a href={l.href}><BrandIcon name={l.icon} /><span><strong>{l.label}</strong><span class="soft">{l.text}</span></span></a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
   <div class="wrap">
-    <ul>
-      {links.map((l) => (
-        <li><a href={l.href}><BrandIcon name={l.icon} /><span>{l.label}</span></a></li>
-      ))}
-    </ul>
     <p class="small soft">
       © {new Date().getFullYear()} Glitch, IIT Hyderabad · Made with <span class="heart" aria-hidden="true">♥</span><span class="visually-hidden">love</span> by Lambda
     </p>
@@ -25,10 +37,30 @@ const links = [
 </footer>
 
 <style>
-  .site-footer { margin-top: var(--u12); padding-block: var(--u6) var(--u4); background: var(--panel); border-top: 1px solid var(--line); }
-  ul { display: flex; flex-wrap: wrap; gap: var(--u2) var(--u4); list-style: none; padding: 0; margin: 0 0 var(--u4); }
-  a { display: inline-flex; align-items: center; gap: var(--u1); min-height: var(--u4); color: var(--text); font-weight: 700; text-decoration: none; }
-  a:hover { color: var(--amber); }
-  a :global(.brand) { width: 24px; height: 24px; color: var(--amber); }
+  .site-footer { margin-top: var(--u12); padding-bottom: var(--u4); background: var(--bg); }
+  /* The logo's red, orange and amber as a stripe across the top: makes the block stand out without a glow */
+  .contact {
+    padding-block: calc(var(--u6) + 12px) var(--u6); margin-bottom: var(--u4); border-bottom: 1px solid var(--line);
+    background: linear-gradient(var(--red) 0 4px, var(--orange) 0 8px, var(--amber) 0 12px, var(--panel) 0);
+    scroll-margin-top: var(--u3); /* plus html scroll-padding: clears the two-row phone header */
+  }
+  .contact-inner { display: grid; gap: var(--u4); align-items: center; }
+  @media (min-width: 900px) { .contact-inner { grid-template-columns: 1.2fr 1fr; } }
+  h2 { margin-top: 0; }
+  .actions { display: flex; flex-wrap: wrap; gap: var(--u2); margin: var(--u3) 0 0; }
+  .btn { overflow-wrap: anywhere; }
+  .btn :global(.brand) { flex: none; width: 22px; height: 22px; }
+  .socials {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: var(--u1);
+    list-style: none; padding: 0; margin: 0;
+  }
+  .socials a {
+    display: flex; align-items: center; gap: var(--u2); height: 100%; padding: var(--u1) var(--u2);
+    background: var(--bg); border: 1px solid var(--line); color: var(--text); text-decoration: none;
+  }
+  .socials a:hover { border-color: var(--amber); }
+  .socials a:hover strong { color: var(--amber); }
+  .socials a > span { display: grid; min-width: 0; overflow-wrap: anywhere; }
+  .socials :global(.brand) { flex: none; width: 28px; height: 28px; color: var(--amber); }
   .heart { font-family: var(--font-pixel); color: var(--accent); }
 </style>
